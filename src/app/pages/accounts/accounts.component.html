@@ -1,6 +1,17 @@
-<div class="accounts-page">
-  <h1>Accounts</h1>
-  <div *ngIf="loading" class="loading">Loading accounts...</div>
+<div class="page accounts-page">
+  <div class="page-header">
+    <div>
+      <h1>Your Accounts</h1>
+      <p class="page-subtitle">All balances as of today. Select an account to view details.</p>
+    </div>
+    <button type="button" class="btn btn-primary">Open a new account</button>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <span>Loading your accounts&hellip;</span>
+  </div>
+
   <div *ngIf="!loading" class="accounts-list">
     <!-- Pattern 5: Deprecated *ngFor syntax -->
     <div *ngFor="let account of accounts; let i = index">

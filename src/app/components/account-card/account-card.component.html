@@ -1,13 +1,28 @@
-<div class="account-card">
-  <div class="account-header">
-    <h3>{{ account.accountType | titlecase }}</h3>
-    <span class="account-number">{{ account.accountNumber }}</span>
-  </div>
-  <div class="account-balance">
-    <p class="balance-label">Available Balance</p>
-    <p class="balance-amount">${{ account.availableBalance | number:'1.2-2' }}</p>
-  </div>
-  <div class="account-details">
-    <p>Current Balance: ${{ account.balance | number:'1.2-2' }}</p>
+<div class="account-card card" [attr.data-type]="account.accountType">
+  <div class="account-stripe"></div>
+  <div class="account-body">
+    <div class="account-header">
+      <div>
+        <h3>{{ displayName }}</h3>
+        <span class="account-number">{{ account.accountType | titlecase }} {{ account.accountNumber }}</span>
+      </div>
+      <span class="badge" [class.badge-blue]="!isCredit" [class.badge-red]="isCredit">
+        {{ isCredit ? 'Credit Card' : 'Deposit' }}
+      </span>
+    </div>
+    <div class="account-balance">
+      <p class="balance-label">{{ isCredit ? 'Available Credit' : 'Available Balance' }}</p>
+      <p class="balance-amount">${{ account.availableBalance | number:'1.2-2' }}</p>
+    </div>
+    <div class="account-details">
+      <span>Current Balance</span>
+      <span class="detail-value">
+        <ng-container *ngIf="account.balance < 0">&minus;</ng-container>${{ absBalance | number:'1.2-2' }}
+      </span>
+    </div>
+    <div class="account-actions">
+      <button type="button" class="btn btn-outline">View activity</button>
+      <button type="button" class="btn btn-outline">Statements</button>
+    </div>
   </div>
 </div>

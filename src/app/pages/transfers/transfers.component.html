@@ -1,4 +1,98 @@
-<div class="transfers-page">
-  <h1>Transfers</h1>
-  <p>Transfer functionality coming soon</p>
+<div class="page transfers-page">
+  <div class="page-header">
+    <div>
+      <h1>Transfer Money</h1>
+      <p class="page-subtitle">Move money between your accounts, or send money with Zelle&reg;.</p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <span>Loading your accounts&hellip;</span>
+  </div>
+
+  <div *ngIf="!loading" class="transfers-layout">
+    <section class="card transfer-card">
+      <div class="card-header">
+        <h2>Between your accounts</h2>
+      </div>
+
+      <div *ngIf="submitted" class="transfer-success">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Transfer scheduled</h3>
+        <p>
+          ${{ amount | number:'1.2-2' }} will be transferred from {{ fromAccount }} to {{ toAccount }}.
+          Transfers between your accounts are typically processed immediately.
+        </p>
+        <button type="button" class="btn btn-primary" (click)="resetForm()">Make another transfer</button>
+      </div>
+
+      <form *ngIf="!submitted" class="transfer-form" (ngSubmit)="submitTransfer()">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fromAccount">From</label>
+            <select id="fromAccount" name="fromAccount" [(ngModel)]="fromAccount">
+              <option value="" disabled>Select account</option>
+              <option *ngFor="let account of accounts" [value]="account.accountType + ' ' + account.accountNumber">
+                {{ account.accountType | titlecase }} {{ account.accountNumber }} &mdash; ${{ account.availableBalance | number:'1.2-2' }} available
+              </option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="toAccount">To</label>
+            <select id="toAccount" name="toAccount" [(ngModel)]="toAccount">
+              <option value="" disabled>Select account</option>
+              <option *ngFor="let account of accounts" [value]="account.accountType + ' ' + account.accountNumber">
+                {{ account.accountType | titlecase }} {{ account.accountNumber }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="amount">Amount</label>
+            <div class="amount-input">
+              <span class="currency">$</span>
+              <input
+                id="amount"
+                name="amount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                [(ngModel)]="amount" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="memo">Memo <span class="optional">(optional)</span></label>
+            <input id="memo" name="memo" type="text" maxlength="60" placeholder="e.g. Rent, savings" [(ngModel)]="memo" />
+          </div>
+        </div>
+
+        <p *ngIf="fromAccount && toAccount && fromAccount === toAccount" class="form-error">
+          The From and To accounts must be different.
+        </p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="!isValid">Continue transfer</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="transfers-side">
+      <section class="card info-card">
+        <div class="card-header">
+          <h2>Good to know</h2>
+        </div>
+        <ul class="info-list">
+          <li>Transfers between your Bank of America accounts are typically immediate.</li>
+          <li>Transfers to external accounts may take 1&ndash;3 business days.</li>
+          <li>Use Zelle&reg; to send money to friends and family in minutes.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
 </div>

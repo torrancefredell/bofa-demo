@@ -8,4 +8,8 @@ import { Transaction } from '../../models';
 })
 export class TransactionRowComponent {
   @Input() transaction!: Transaction;
+
+  get absAmount(): number {
+    return Math.abs(this.transaction.amount);
+  }
 }

@@ -1,20 +1,98 @@
-<div class="dashboard-page">
-  <h1>Dashboard</h1>
-  <div *ngIf="loading" class="loading">Loading dashboard...</div>
+<div class="page dashboard-page">
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <span>Loading your dashboard&hellip;</span>
+  </div>
+
   <div *ngIf="!loading" class="dashboard-content">
-    <div class="dashboard-summary">
-      <app-balance-display 
-        [balance]="dashboardData.totalBalance" 
-        label="Total Balance">
-      </app-balance-display>
-      <app-balance-display 
-        [balance]="dashboardData.monthlySpending" 
-        label="Monthly Spending">
-      </app-balance-display>
+    <div class="page-header">
+      <div>
+        <h1>Good day, Tori</h1>
+        <p class="page-subtitle">Here's your financial snapshot for {{ today | date:'fullDate' }}</p>
+      </div>
+      <a routerLink="/transfers" class="btn btn-primary">Make a Transfer</a>
     </div>
-    <div class="dashboard-details">
-      <p>Pending Transactions: {{ dashboardData.pendingTransactions }}</p>
-      <p>Credit Score: {{ dashboardData.creditScore }}</p>
+
+    <div class="stat-grid">
+      <app-balance-display
+        [balance]="dashboardData.totalBalance"
+        label="Total Balance"
+        sublabel="Across all accounts"
+        icon="wallet">
+      </app-balance-display>
+      <app-balance-display
+        [balance]="dashboardData.monthlySpending"
+        label="Monthly Spending"
+        sublabel="July 2026 to date"
+        icon="chart">
+      </app-balance-display>
+      <div class="stat-card card">
+        <div class="stat-icon icon-pending">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="stat-body">
+          <p class="stat-label">Pending Transactions</p>
+          <p class="stat-value">{{ dashboardData.pendingTransactions }}</p>
+          <p class="stat-sub">Awaiting processing</p>
+        </div>
+      </div>
+      <div class="stat-card card">
+        <div class="stat-icon icon-score">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12A10 10 0 1 1 12 2"/><polyline points="12 7 12 12 15.5 13.5"/></svg>
+        </div>
+        <div class="stat-body">
+          <p class="stat-label">FICO&reg; Credit Score</p>
+          <p class="stat-value">{{ dashboardData.creditScore }}</p>
+          <p class="stat-sub"><span class="badge badge-green">Excellent</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-columns">
+      <section class="card activity-card">
+        <div class="card-header">
+          <h2>Recent Activity</h2>
+          <a routerLink="/accounts" class="card-link">View all accounts &rsaquo;</a>
+        </div>
+        <div class="activity-list">
+          <app-transaction-row
+            *ngFor="let transaction of transactions"
+            [transaction]="transaction">
+          </app-transaction-row>
+        </div>
+      </section>
+
+      <aside class="dashboard-side">
+        <section class="card quick-actions">
+          <div class="card-header">
+            <h2>Quick Actions</h2>
+          </div>
+          <div class="actions-list">
+            <a routerLink="/transfers" class="action-item">
+              <span class="action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M21 7H9"/><path d="M7 21l-4-4 4-4"/><path d="M3 17h12"/></svg></span>
+              Transfer money
+            </a>
+            <a routerLink="/accounts" class="action-item">
+              <span class="action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+              View accounts
+            </a>
+            <a href="#" class="action-item">
+              <span class="action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              Contact support
+            </a>
+            <a href="#" class="action-item">
+              <span class="action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              Security center
+            </a>
+          </div>
+        </section>
+
+        <section class="card promo-card">
+          <h3>Preferred Rewards</h3>
+          <p>You're a Platinum Honors member. Enjoy boosted interest rates and rewards on eligible accounts.</p>
+          <a href="#" class="btn btn-outline">View benefits</a>
+        </section>
+      </aside>
     </div>
   </div>
 </div>

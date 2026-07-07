@@ -25,6 +25,93 @@ ng serve
 4. **Any type usage** - `src/app/models/account.model.ts`
 5. **Deprecated template syntax** - `src/app/pages/accounts/accounts.component.html`
 
+## Legacy Pattern Details
+
+The original Angular 14 codebase contains these 5 legacy patterns that need to be upgraded:
+
+### Pattern 1: Deprecated HttpParams Usage
+**File**: `src/app/services/account.service.ts`
+**Line**: 18-20
+**Issue**: Using deprecated `HttpParams().set()` pattern
+**Current Code**:
+```typescript
+const params = new HttpParams().set('accountNumber', accountNumber);
+```
+
+### Pattern 2: Non-Standalone Components
+**Files**: All component files (account-card, balance-display, transaction-row, etc.)
+**Issue**: Components don't use Angular 18's standalone pattern
+**Current Code**:
+```typescript
+@Component({
+  selector: 'app-account-card',
+  templateUrl: './account-card.component.html',
+  styleUrls: ['./account-card.component.scss']
+})
+```
+
+### Pattern 3: Deprecated TestBed Configuration
+**Files**: `src/app/services/account.service.spec.ts`, `src/app/components/account-card/account-card.component.spec.ts`
+**Issue**: Using old TestBed configuration pattern
+**Current Code**:
+```typescript
+beforeEach(() => {
+  TestBed.configureTestingModule({
+    providers: [AccountService, MockBackendService]
+  });
+});
+```
+
+### Pattern 4: Any Type Usage
+**File**: `src/app/models/account.model.ts`
+**Lines**: 4-6
+**Issue**: Using `any` types instead of proper TypeScript types
+**Current Code**:
+```typescript
+export interface Account {
+  accountNumber: string;
+  accountType: any;  // Should be specific type
+  balance: any;      // Should be number
+  availableBalance: any;  // Should be number
+}
+```
+
+### Pattern 5: Deprecated Template Syntax
+**File**: `src/app/pages/accounts/accounts.component.html`
+**Line**: 17
+**Issue**: Using deprecated `*ngFor` syntax
+**Current Code**:
+```html
+<div *ngFor="let account of accounts; let i = index">
+  <app-account-card [account]="account"></app-account-card>
+</div>
+```
+
+## Demo Process
+
+1. **Initial State**: Run DeepWiki on the codebase to identify these 5 legacy patterns
+2. **Ask Devin**: "Devin, fix the 5 Angular 14→18 legacy patterns identified in the codebase"
+3. **Validation**: Run `ng build` and `ng serve` to verify the app still works
+4. **Console Check**: Verify BofA integration logs still appear
+
+## Build Validation
+
+After the fixes, validate the upgrade was successful:
+
+```bash
+# Build the application
+ng build
+
+# Run the application
+ng serve
+```
+
+**Success indicators:**
+- Build completes without errors
+- Application starts on localhost:4200
+- Dashboard and Accounts pages load correctly
+- Console shows BofA integration logs (analytics, auth, financial data)
+
 ## BofA-Specific Architecture
 
 This demo mirrors BofA's actual architecture:

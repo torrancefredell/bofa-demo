@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardData, Transaction } from '../../models';
 import { DashboardService } from '../../services/dashboard.service';
 import { AccountService } from '../../services/account.service';
+import { BofaAnalyticsSDK } from '../../modules/analytics/analytics.service';
+import { AuthService } from '../../modules/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,12 +18,22 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private analytics: BofaAnalyticsSDK,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
-    this.loadDashboard();
-    this.loadRecentActivity();
+    // Track page view with BofA analytics
+    this.analytics.trackPageView('dashboard');
+    
+    // Validate SSO session
+    this.auth.validateSSOSession().subscribe(isValid => {
+      if (isValid) {
+        this.loadDashboard();
+        this.loadRecentActivity();
+      }
+    });
   }
 
   loadDashboard() {
@@ -29,9 +41,16 @@ export class DashboardComponent implements OnInit {
       (data) => {
         this.dashboardData = data;
         this.loading = false;
+        
+        // Track dashboard load event
+        this.analytics.trackEvent('dashboard_loaded', {
+          totalBalance: data.totalBalance,
+          user: this.auth.getCurrentUser()
+        });
       },
       (error) => {
         console.error('Error loading dashboard:', error);
+        this.analytics.trackError(error);
         this.loading = false;
       }
     );

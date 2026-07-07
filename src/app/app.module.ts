@@ -10,6 +10,12 @@ import { TransfersComponent } from './pages/transfers/transfers.component';
 import { AccountCardComponent } from './components/account-card/account-card.component';
 import { BalanceDisplayComponent } from './components/balance-display/balance-display.component';
 import { TransactionRowComponent } from './components/transaction-row/transaction-row.component';
+import { SharedHeaderComponent } from './shared/components/shared-header/shared-header.component';
+
+// BofA-specific integration modules
+import { BofaAuthModule } from './modules/auth/auth.module';
+import { BofaAnalyticsModule } from './modules/analytics/analytics.module';
+import { BofaFinancialDataModule } from './modules/financial-data/financial-data.module';
 
 @NgModule({
   declarations: [
@@ -19,12 +25,16 @@ import { TransactionRowComponent } from './components/transaction-row/transactio
     TransfersComponent,
     AccountCardComponent,
     BalanceDisplayComponent,
-    TransactionRowComponent
+    TransactionRowComponent,
+    SharedHeaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BofaAuthModule,
+    BofaAnalyticsModule,
+    BofaFinancialDataModule
   ],
   providers: [],
   bootstrap: [AppComponent]

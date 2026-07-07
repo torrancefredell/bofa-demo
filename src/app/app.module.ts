@@ -17,6 +17,9 @@ import { BofaAuthModule } from './modules/auth/auth.module';
 import { BofaAnalyticsModule } from './modules/analytics/analytics.module';
 import { BofaFinancialDataModule } from './modules/financial-data/financial-data.module';
 
+// Shared component library (represents BofA's internal library used by downstream teams)
+// The SharedHeaderComponent demonstrates usage of the shared library
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,0 +1,21 @@
+.balance-display {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .balance-label {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .balance-amount {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #0066cc;
+  }
+}

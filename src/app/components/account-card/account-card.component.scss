@@ -1,0 +1,51 @@
+.account-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .account-number {
+      color: #666;
+      font-size: 14px;
+    }
+  }
+
+  .account-balance {
+    margin-bottom: 12px;
+
+    .balance-label {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .balance-amount {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0066cc;
+    }
+  }
+
+  .account-details {
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}

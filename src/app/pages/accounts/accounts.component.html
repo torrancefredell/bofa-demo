@@ -1,0 +1,10 @@
+<div class="accounts-page">
+  <h1>Accounts</h1>
+  <div *ngIf="loading" class="loading">Loading accounts...</div>
+  <div *ngIf="!loading" class="accounts-list">
+    <!-- Pattern 5: Deprecated *ngFor syntax -->
+    <div *ngFor="let account of accounts; let i = index">
+      <app-account-card [account]="account"></app-account-card>
+    </div>
+  </div>
+</div>

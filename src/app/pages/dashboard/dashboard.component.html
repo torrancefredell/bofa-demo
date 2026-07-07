@@ -1,0 +1,20 @@
+<div class="dashboard-page">
+  <h1>Dashboard</h1>
+  <div *ngIf="loading" class="loading">Loading dashboard...</div>
+  <div *ngIf="!loading" class="dashboard-content">
+    <div class="dashboard-summary">
+      <app-balance-display 
+        [balance]="dashboardData.totalBalance" 
+        label="Total Balance">
+      </app-balance-display>
+      <app-balance-display 
+        [balance]="dashboardData.monthlySpending" 
+        label="Monthly Spending">
+      </app-balance-display>
+    </div>
+    <div class="dashboard-details">
+      <p>Pending Transactions: {{ dashboardData.pendingTransactions }}</p>
+      <p>Credit Score: {{ dashboardData.creditScore }}</p>
+    </div>
+  </div>
+</div>

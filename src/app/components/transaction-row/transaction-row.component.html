@@ -1,0 +1,12 @@
+<div class="transaction-row">
+  <div class="transaction-info">
+    <p class="transaction-description">{{ transaction.description }}</p>
+    <p class="transaction-category">{{ transaction.category }}</p>
+  </div>
+  <div class="transaction-amount">
+    <p [class.negative]="transaction.amount < 0">
+      ${{ transaction.amount | number:'1.2-2' }}
+    </p>
+    <p class="transaction-date">{{ transaction.date }}</p>
+  </div>
+</div>

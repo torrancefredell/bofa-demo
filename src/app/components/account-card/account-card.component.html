@@ -1,0 +1,13 @@
+<div class="account-card">
+  <div class="account-header">
+    <h3>{{ account.accountType | titlecase }}</h3>
+    <span class="account-number">{{ account.accountNumber }}</span>
+  </div>
+  <div class="account-balance">
+    <p class="balance-label">Available Balance</p>
+    <p class="balance-amount">${{ account.availableBalance | number:'1.2-2' }}</p>
+  </div>
+  <div class="account-details">
+    <p>Current Balance: ${{ account.balance | number:'1.2-2' }}</p>
+  </div>
+</div>

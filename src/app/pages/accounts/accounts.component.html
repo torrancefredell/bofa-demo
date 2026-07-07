@@ -1,9 +1,9 @@
 <div class="page accounts-page">
+  <shared-header 
+    title="Your Accounts"
+    subtitle="All balances as of today. Select an account to view details.">
+  </shared-header>
   <div class="page-header">
-    <div>
-      <h1>Your Accounts</h1>
-      <p class="page-subtitle">All balances as of today. Select an account to view details.</p>
-    </div>
     <button type="button" class="btn btn-primary">Open a new account</button>
   </div>
 
@@ -13,7 +13,7 @@
   </div>
 
   <div *ngIf="!loading" class="accounts-list">
-    <!-- Pattern 5: Deprecated *ngFor syntax -->
+    <!-- Pattern 5: Deprecated *ngFor syntax (Angular 18 uses @for) -->
     <div *ngFor="let account of accounts; let i = index">
       <app-account-card [account]="account"></app-account-card>
     </div>

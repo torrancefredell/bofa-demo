@@ -1,10 +1,43 @@
 <div class="app-container">
-  <nav class="main-nav">
-    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/accounts" routerLinkActive="active">Accounts</a>
-    <a routerLink="/transfers" routerLinkActive="active">Transfers</a>
-  </nav>
+  <header class="app-header">
+    <div class="header-inner">
+      <a routerLink="/dashboard" class="brand">
+        <span class="brand-flag">
+          <span></span><span></span><span></span>
+        </span>
+        <span class="brand-name">Bank of America<span class="brand-sub">Online Banking</span></span>
+      </a>
+      <nav class="main-nav">
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/accounts" routerLinkActive="active">Accounts</a>
+        <a routerLink="/transfers" routerLinkActive="active">Transfer | Zelle&reg;</a>
+      </nav>
+      <div class="header-user">
+        <span class="user-avatar">TF</span>
+        <span class="user-name">Tori F.</span>
+        <button type="button" class="sign-out">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>
+
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Security Center</a>
+        <a href="#">Accessible Banking</a>
+        <a href="#">Locations</a>
+        <a href="#">Help &amp; Support</a>
+      </div>
+      <p class="footer-legal">
+        Bank of America, N.A. Member FDIC. Equal Housing Lender. This is a demo application &mdash; no real
+        financial data is displayed. Bank of America and the Bank of America logo are registered trademarks
+        of Bank of America Corporation.
+      </p>
+    </div>
+  </footer>
 </div>

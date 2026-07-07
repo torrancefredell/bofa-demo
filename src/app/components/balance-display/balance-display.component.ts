@@ -8,4 +8,14 @@ import { Component, Input } from '@angular/core';
 export class BalanceDisplayComponent {
   @Input() balance!: number;
   @Input() label!: string;
+  @Input() sublabel = '';
+  @Input() icon: 'wallet' | 'chart' = 'wallet';
+
+  get absBalance(): number {
+    return Math.abs(this.balance);
+  }
+
+  get isNegative(): boolean {
+    return this.balance < 0;
+  }
 }

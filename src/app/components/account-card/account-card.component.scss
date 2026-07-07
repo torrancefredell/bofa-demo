@@ -1,51 +1,98 @@
 .account-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 16px;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .account-stripe {
+    height: 5px;
+    background: var(--color-primary);
+  }
+
+  &[data-type='savings'] .account-stripe {
+    background: var(--color-positive);
+  }
+
+  &[data-type='credit'] .account-stripe {
+    background: var(--color-accent);
+  }
+
+  .account-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 
   .account-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 18px;
 
     h3 {
-      margin: 0;
-      font-size: 18px;
-      color: #333;
+      font-size: 16px;
+      margin-bottom: 2px;
     }
 
     .account-number {
-      color: #666;
-      font-size: 14px;
+      color: var(--color-text-muted);
+      font-size: 12px;
     }
   }
 
   .account-balance {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 
     .balance-label {
-      margin: 0 0 8px 0;
-      font-size: 14px;
-      color: #666;
+      margin: 0 0 2px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-secondary);
     }
 
     .balance-amount {
       margin: 0;
-      font-size: 24px;
-      font-weight: bold;
-      color: #0066cc;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+      font-variant-numeric: tabular-nums;
     }
   }
 
   .account-details {
-    p {
-      margin: 0;
-      font-size: 14px;
-      color: #666;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    padding: 10px 0;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: 14px;
+
+    .detail-value {
+      font-weight: 600;
+      color: var(--color-text);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .account-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+
+    .btn {
+      padding: 8px 16px;
+      font-size: 13px;
     }
   }
 }

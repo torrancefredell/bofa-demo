@@ -1,24 +1,20 @@
-.accounts-page {
-  padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+.accounts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
 
-  h1 {
-    margin-bottom: 24px;
-    color: #333;
-    font-size: 32px;
+  > div {
+    display: flex;
+    flex-direction: column;
   }
 
-  .loading {
-    text-align: center;
-    padding: 40px;
-    color: #666;
-    font-size: 16px;
-  }
+  app-account-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
-  .accounts-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+    ::ng-deep .account-card {
+      flex: 1;
+    }
   }
 }

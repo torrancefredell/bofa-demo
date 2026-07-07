@@ -48,6 +48,17 @@
   - Shared component library (`src/app/shared/`)
   - BofA integration modules (auth, analytics, financial data)
   - Custom design system with BofA branding
+- **Explain downstream teams context:**
+  - "In reality, BofA has 12+ teams consuming this shared component library:
+    - Digital Banking Team (this demo)
+    - Mobile Banking Team
+    - Small Business Banking Team
+    - Wealth Management Team
+    - Credit Cards Team
+    - Mortgage Team
+    - And 6+ other teams
+  - The shared library team's upgrade must not break any of these downstream teams' applications
+  - In this demo, our `src/app/shared/` represents the shared component library, and the pages represent one downstream team's app consuming it"
 - Highlight the 5 legacy patterns to fix
 
 **Fix 5 Patterns (12 minutes, ~2 minutes each):**
@@ -93,8 +104,9 @@
 - "Security checks can be integrated"
 
 **Chief Architect:**
-- "Devin maintains architectural standards"
-- "Shared library upgrade won't break downstream teams"
+- "Devin maintains architectural standards and ensures shared library upgrades don't break downstream teams"
+- "With 12+ teams consuming the shared library, a manual upgrade would require coordination across all teams"
+- "Devin's systematic approach tests the upgrade at the library level, ensuring all downstream teams can consume the upgraded library without manual intervention"
 - "Creates documentation for future upgrades"
 
 **Next steps proposal:**
@@ -115,7 +127,7 @@
 
 ### Chief Architect
 **Primary concerns:** Architecture integrity, downstream impact, standards
-**Key message:** "Devin maintains architectural standards and ensures shared library upgrades don't break downstream teams"
+**Key message:** "Devin maintains architectural standards and ensures shared library upgrades don't break downstream teams. With 12+ teams consuming the shared library, Devin's systematic approach ensures all downstream teams can consume the upgraded library without manual intervention."
 
 ## Demo Practice Tips
 

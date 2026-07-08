@@ -7,6 +7,7 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.oxml.ns import qn
 import copy
+import os
 
 NAVY = RGBColor(0x01, 0x21, 0x69)   # BofA blue
 RED = RGBColor(0xE3, 0x18, 0x37)    # BofA red
@@ -472,5 +473,6 @@ Highest priority items:
 3. Attendee names/backgrounds — the personas slide is dramatically stronger delivered to real people by name.
 4. The extended-LTS question — if BofA already bought Angular extended support, your urgency pitch shifts from 'policy violation' to 'you're paying rent on dead software; here's the exit.'""")
 
-prs.save("/home/ubuntu/deck/BofA_x_Cognition_Devin_Demo.pptx")
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "BofA_x_Cognition_Devin_Demo.pptx")
+prs.save(out)
 print("slides:", len(prs.slides._sldIdLst))

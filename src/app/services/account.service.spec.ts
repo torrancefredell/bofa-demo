@@ -6,10 +6,7 @@ describe('AccountService', () => {
   let service: AccountService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [AccountService, MockBackendService]
-    });
-    // Pattern 3: Deprecated TestBed configuration
+    TestBed.configureTestingModule({});
     service = TestBed.inject(AccountService);
   });
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { DashboardData, Transaction } from '../../models';
+import { BalanceDisplayComponent } from '../../components/balance-display/balance-display.component';
+import { TransactionRowComponent } from '../../components/transaction-row/transaction-row.component';
 import { DashboardService } from '../../services/dashboard.service';
 import { AccountService } from '../../services/account.service';
 import { BofaAnalyticsSDK } from '../../modules/analytics/analytics.service';
@@ -7,6 +11,8 @@ import { AuthService } from '../../modules/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
+  imports: [CommonModule, RouterLink, BalanceDisplayComponent, TransactionRowComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

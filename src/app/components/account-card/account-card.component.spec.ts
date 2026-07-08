@@ -5,11 +5,10 @@ describe('AccountCardComponent', () => {
   let component: AccountCardComponent;
   let fixture: ComponentFixture<AccountCardComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [AccountCardComponent]
-    });
-    // Pattern 3: Deprecated TestBed configuration
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AccountCardComponent]
+    }).compileComponents();
     fixture = TestBed.createComponent(AccountCardComponent);
     component = fixture.componentInstance;
     component.account = {

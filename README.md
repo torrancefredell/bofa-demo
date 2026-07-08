@@ -24,8 +24,8 @@ Start a Devin session with `!bofa_demo` to run the full demo end-to-end. The pla
 1. Records the baseline (`npm run build` + headless Karma tests)
 2. Performs the real Angular 14→18 upgrade stepwise via `ng update` (14→15→16→17→18)
 3. Modernizes the 5 legacy patterns (deprecated HttpParams, non-standalone components, deprecated TestBed configuration, `any` types in `account.model.ts`, deprecated `*ngFor` template syntax)
-4. Validates the result: build passes, all tests pass, app serves on `localhost:4200`, and BofA integration console logs (analytics, auth, financial data) still appear
-5. Delivers the work as pull requests (framework upgrade PR + pattern modernization PR) with validation evidence
+4. Validates the result: build passes, all tests pass, an automated pattern scan confirms zero remaining occurrences of the 5 patterns, app serves on `localhost:4200` with a recorded GUI click-through, and the BofA Analytics console logs still appear
+5. Delivers the work as pull requests (framework upgrade PR + pattern modernization PR) with validation evidence, including inline PR comments pointing at each pattern fix
 
 ## Build Validation
 
@@ -43,7 +43,7 @@ ng serve
 - Build completes without errors
 - Application starts on localhost:4200
 - Dashboard and Accounts pages load correctly
-- Console shows BofA integration logs (analytics, auth, financial data)
+- Console shows the BofA Analytics SDK logs (the only integration that logs at baseline — auth and financial-data services do not log by design)
 
 ## BofA-Specific Architecture
 

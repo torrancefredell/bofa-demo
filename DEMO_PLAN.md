@@ -88,6 +88,9 @@
 - Run the application to show it still works
 - Demonstrate BofA branding and integrations work
 - Show analytics console logs proving BofA SDK integration
+- Show the automated pattern scan output: zero remaining occurrences of all 5 legacy patterns
+- Show the inline PR comments on the modernization PR pointing at each pattern fix
+- Play the recorded GUI click-through (Devin navigating Dashboard/Accounts in its own browser) as visual proof
 
 ### 4. Discussion & Next Steps (15 minutes)
 

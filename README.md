@@ -15,84 +15,17 @@ npm install
 ng serve
 ```
 
-## Demo Overview
+## Demo Workflow
 
-**15-minute demo showing 5 Angular 14→18 legacy patterns:**
+The demo is run via the Devin playbook **"BofA Demo — Angular 14→18 Migration with Validation"** (macro: `!bofa_demo`).
 
-1. **Deprecated HttpParams** - `src/app/services/account.service.ts`
-2. **Non-standalone components** - All component files
-3. **Deprecated TestBed configuration** - Test files
-4. **Any type usage** - `src/app/models/account.model.ts`
-5. **Deprecated template syntax** - `src/app/pages/accounts/accounts.component.html`
+Start a Devin session with `!bofa_demo` to run the full demo end-to-end. The playbook:
 
-## Legacy Pattern Details
-
-The original Angular 14 codebase contains these 5 legacy patterns that need to be upgraded:
-
-### Pattern 1: Deprecated HttpParams Usage
-**File**: `src/app/services/account.service.ts`
-**Line**: 18-20
-**Issue**: Using deprecated `HttpParams().set()` pattern
-**Current Code**:
-```typescript
-const params = new HttpParams().set('accountNumber', accountNumber);
-```
-
-### Pattern 2: Non-Standalone Components
-**Files**: All component files (account-card, balance-display, transaction-row, etc.)
-**Issue**: Components don't use Angular 18's standalone pattern
-**Current Code**:
-```typescript
-@Component({
-  selector: 'app-account-card',
-  templateUrl: './account-card.component.html',
-  styleUrls: ['./account-card.component.scss']
-})
-```
-
-### Pattern 3: Deprecated TestBed Configuration
-**Files**: `src/app/services/account.service.spec.ts`, `src/app/components/account-card/account-card.component.spec.ts`
-**Issue**: Using old TestBed configuration pattern
-**Current Code**:
-```typescript
-beforeEach(() => {
-  TestBed.configureTestingModule({
-    providers: [AccountService, MockBackendService]
-  });
-});
-```
-
-### Pattern 4: Any Type Usage
-**File**: `src/app/models/account.model.ts`
-**Lines**: 4-6
-**Issue**: Using `any` types instead of proper TypeScript types
-**Current Code**:
-```typescript
-export interface Account {
-  accountNumber: string;
-  accountType: any;  // Should be specific type
-  balance: any;      // Should be number
-  availableBalance: any;  // Should be number
-}
-```
-
-### Pattern 5: Deprecated Template Syntax
-**File**: `src/app/pages/accounts/accounts.component.html`
-**Line**: 17
-**Issue**: Using deprecated `*ngFor` syntax
-**Current Code**:
-```html
-<div *ngFor="let account of accounts; let i = index">
-  <app-account-card [account]="account"></app-account-card>
-</div>
-```
-
-## Demo Process
-
-1. **Initial State**: Run DeepWiki on the codebase to identify these 5 legacy patterns
-2. **Ask Devin**: "Devin, fix the 5 Angular 14→18 legacy patterns identified in the codebase"
-3. **Validation**: Run `ng build` and `ng serve` to verify the app still works
-4. **Console Check**: Verify BofA integration logs still appear
+1. Records the baseline (`npm run build` + headless Karma tests)
+2. Performs the real Angular 14→18 upgrade stepwise via `ng update` (14→15→16→17→18)
+3. Modernizes the 5 legacy patterns (deprecated HttpParams, non-standalone components, deprecated TestBed configuration, `any` types in `account.model.ts`, deprecated `*ngFor` template syntax)
+4. Validates the result: build passes, all tests pass, app serves on `localhost:4200`, and BofA integration console logs (analytics, auth, financial data) still appear
+5. Delivers the work as pull requests (framework upgrade PR + pattern modernization PR) with validation evidence
 
 ## Build Validation
 

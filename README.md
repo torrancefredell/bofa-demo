@@ -23,23 +23,9 @@ Start a Devin session with `!bofa_demo` to run the full demo end-to-end. The pla
 
 1. Records the baseline (`npm run build` + headless Karma tests)
 2. Performs the real Angular 14→18 upgrade stepwise via `ng update` (14→15→16→17→18)
-3. Modernizes all known legacy patterns (see below) repo-wide in a single modernization PR
-4. Validates the result: build passes, all tests pass, a repo-wide pattern scan returns zero occurrences, app serves on `localhost:4200`, and BofA integration console logs still appear
-5. Delivers the work as pull requests (framework upgrade PR + one pattern modernization PR) with validation evidence, including inline PR comments pointing at each pattern fix
-
-## Known Legacy Patterns
-
-The Angular 14 codebase contains these legacy patterns, all eliminated repo-wide by the demo workflow:
-
-1. **Deprecated HttpParams usage** — `new HttpParams().set(...)` chains (`src/app/services/account.service.ts`)
-2. **Non-standalone components** — components declared via NgModules instead of `standalone: true`
-3. **Deprecated TestBed configuration** — module-style `declarations`/`providers` setup in spec files
-4. **`any` type usage** — untyped financial models and services (`src/app/models/account.model.ts`, analytics/auth/financial-data services)
-5. **Deprecated template control flow** — `*ngFor`/`*ngIf` instead of Angular 17+ `@for`/`@if` (all templates)
-6. **Leftover NgModule scaffolding** — unused `.module.ts` files in `src/app/modules/` after standalone bootstrap
-7. **Constructor-based dependency injection** — constructor injection instead of the modern `inject()` function
-8. **Untyped template-driven forms** — `[(ngModel)]` on the Transfers page instead of typed reactive forms
-9. **Unmanaged subscriptions** — manual `.subscribe()` in components without `takeUntilDestroyed`, the `async` pipe, or signals
+3. Modernizes the 5 legacy patterns (deprecated HttpParams, non-standalone components, deprecated TestBed configuration, `any` types in `account.model.ts`, deprecated `*ngFor` template syntax)
+4. Validates the result: build passes, all tests pass, app serves on `localhost:4200`, and BofA integration console logs (analytics, auth, financial data) still appear
+5. Delivers the work as pull requests (framework upgrade PR + pattern modernization PR) with validation evidence
 
 ## Build Validation
 

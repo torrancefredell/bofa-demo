@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-balance-display',
-  templateUrl: './balance-display.component.html',
-  styleUrls: ['./balance-display.component.scss']
+    selector: 'app-balance-display',
+    templateUrl: './balance-display.component.html',
+    styleUrls: ['./balance-display.component.scss'],
+    standalone: true,
+    imports: [DecimalPipe]
 })
 export class BalanceDisplayComponent {
   @Input() balance!: number;

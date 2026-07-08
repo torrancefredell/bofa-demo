@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Account } from '../../models';
+import { DecimalPipe, TitleCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-account-card',
-  templateUrl: './account-card.component.html',
-  styleUrls: ['./account-card.component.scss']
+    selector: 'app-account-card',
+    templateUrl: './account-card.component.html',
+    styleUrls: ['./account-card.component.scss'],
+    standalone: true,
+    imports: [DecimalPipe, TitleCasePipe]
 })
 export class AccountCardComponent {
   @Input() account!: Account;

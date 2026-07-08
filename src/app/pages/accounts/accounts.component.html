@@ -1,5 +1,5 @@
 <div class="page accounts-page">
-  <shared-header 
+  <shared-header
     title="Your Accounts"
     subtitle="All balances as of today. Select an account to view details.">
   </shared-header>
@@ -7,15 +7,20 @@
     <button type="button" class="btn btn-primary">Open a new account</button>
   </div>
 
-  <div *ngIf="loading" class="loading-state">
-    <div class="spinner"></div>
-    <span>Loading your accounts&hellip;</span>
-  </div>
-
-  <div *ngIf="!loading" class="accounts-list">
-    <!-- Pattern 5: Deprecated *ngFor syntax (Angular 18 uses @for) -->
-    <div *ngFor="let account of accounts; let i = index">
-      <app-account-card [account]="account"></app-account-card>
+  @if (loading) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <span>Loading your accounts&hellip;</span>
     </div>
-  </div>
+  }
+
+  @if (!loading) {
+    <div class="accounts-list">
+      @for (account of accounts; track account; let i = $index) {
+        <div>
+          <app-account-card [account]="account"></app-account-card>
+        </div>
+      }
+    </div>
+  }
 </div>

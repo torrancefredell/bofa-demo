@@ -12,7 +12,7 @@ export class BofaAnalyticsSDK {
   }
 
   // Mock BofA proprietary analytics tracking
-  trackEvent(event: string, data: any): void {
+  trackEvent(event: string, data: Record<string, unknown>): void {
     console.log('BofA Analytics Event:', event, data);
     // In production: sends to BofA's internal analytics platform
   }
@@ -27,18 +27,18 @@ export class BofaAnalyticsSDK {
     // In production: links user to BofA customer data
   }
 
-  trackTransaction(transaction: any): void {
+  trackTransaction(transaction: Record<string, unknown>): void {
     console.log('BofA Transaction Tracking:', transaction);
     // In production: tracks financial transactions for compliance
   }
 
-  trackError(error: any): void {
+  trackError(error: unknown): void {
     console.log('BofA Error Tracking:', error);
     // In production: sends error data to BofA monitoring
   }
 
   // Mock BofA-specific analytics features
-  trackSecurityEvent(event: string, details: any): void {
+  trackSecurityEvent(event: string, details: Record<string, unknown>): void {
     console.log('BofA Security Event:', event, details);
     // In production: security compliance tracking
   }

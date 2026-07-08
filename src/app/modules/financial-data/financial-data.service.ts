@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
 
+interface MarketIndex {
+  name: string;
+  value: number;
+  change: string;
+}
+
 interface MarketData {
   provider: string;
   timestamp: string;
   data: {
-    indices: any[];
-    rates: any;
+    indices: MarketIndex[];
+    rates: Record<string, string>;
   };
 }
 
@@ -20,6 +26,18 @@ interface FraudData {
   provider: string;
   riskLevel: 'low' | 'medium' | 'high';
   flags: string[];
+}
+
+interface AccountAggregationData {
+  provider: string;
+  accounts: number;
+  lastSync: string;
+}
+
+interface ACHProcessingData {
+  provider: string;
+  status: string;
+  dailyLimit: number;
 }
 
 @Injectable({
@@ -62,12 +80,12 @@ export class FinancialDataService {
     return of({
       provider: 'FICO Fraud Detection',
       riskLevel: 'low' as const,
-      flags: []
+      flags: [] as string[]
     }).pipe(delay(250)); // Simulate fraud detection API delay
   }
 
   // Mock other third-party providers
-  getAccountAggregation(): Observable<any> {
+  getAccountAggregation(): Observable<AccountAggregationData> {
     return of({
       provider: 'Yodlee',
       accounts: 3,
@@ -75,7 +93,7 @@ export class FinancialDataService {
     }).pipe(delay(350));
   }
 
-  getACHProcessing(): Observable<any> {
+  getACHProcessing(): Observable<ACHProcessingData> {
     return of({
       provider: 'FedACH',
       status: 'active',

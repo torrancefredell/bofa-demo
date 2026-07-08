@@ -6,8 +6,6 @@ import { Account, Transaction, DashboardData } from '../models';
   providedIn: 'root'
 })
 export class MockBackendService {
-  constructor() {}
-
   // Simulate account data fetch - similar to BofA's accounts page
   getAccounts(): Observable<Account[]> {
     const mockAccounts: Account[] = [

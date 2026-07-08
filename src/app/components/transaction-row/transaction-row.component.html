@@ -1,7 +1,11 @@
 <div class="transaction-row">
   <div class="transaction-icon" [class.credit]="transaction.amount > 0">
-    <svg *ngIf="transaction.amount > 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-    <svg *ngIf="transaction.amount <= 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    @if (transaction.amount > 0) {
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    }
+    @if (transaction.amount <= 0) {
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    }
   </div>
   <div class="transaction-info">
     <p class="transaction-description">{{ transaction.description }}</p>
@@ -9,7 +13,11 @@
   </div>
   <div class="transaction-amount">
     <p class="amount" [class.credit]="transaction.amount > 0">
-      <ng-container *ngIf="transaction.amount > 0">+</ng-container><ng-container *ngIf="transaction.amount < 0">&minus;</ng-container>${{ absAmount | number:'1.2-2' }}
-    </p>
+      @if (transaction.amount > 0) {
+        +
+        }@if (transaction.amount < 0) {
+        &minus;
+        }${{ absAmount | number:'1.2-2' }}
+      </p>
+    </div>
   </div>
-</div>

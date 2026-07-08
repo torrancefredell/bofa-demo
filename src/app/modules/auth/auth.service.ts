@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
 
+interface AuthUser {
+  name: string;
+  id: string;
+  role: string;
+}
+
 interface AuthResponse {
   authenticated: boolean;
   token: string;
-  user: {
-    name: string;
-    id: string;
-    role: string;
-  };
+  user: AuthUser | null;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUser: any = null;
+  private currentUser: AuthUser | null = null;
   private readonly MOCK_TOKEN = 'mock-bofa-sso-token-' + Date.now();
 
   constructor() {
@@ -47,7 +49,7 @@ export class AuthService {
     return this.MOCK_TOKEN;
   }
 
-  getCurrentUser(): any {
+  getCurrentUser(): AuthUser | null {
     return this.currentUser;
   }
 

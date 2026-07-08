@@ -17,12 +17,14 @@
     <div class="account-details">
       <span>Current Balance</span>
       <span class="detail-value">
-        <ng-container *ngIf="account.balance < 0">&minus;</ng-container>${{ absBalance | number:'1.2-2' }}
-      </span>
-    </div>
-    <div class="account-actions">
-      <button type="button" class="btn btn-outline">View activity</button>
-      <button type="button" class="btn btn-outline">Statements</button>
+        @if (account.balance < 0) {
+          &minus;
+          }${{ absBalance | number:'1.2-2' }}
+        </span>
+      </div>
+      <div class="account-actions">
+        <button type="button" class="btn btn-outline">View activity</button>
+        <button type="button" class="btn btn-outline">Statements</button>
+      </div>
     </div>
   </div>
-</div>

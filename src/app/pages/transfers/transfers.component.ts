@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Account } from '../../models';
 import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-transfers',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './transfers.component.html',
   styleUrls: ['./transfers.component.scss']
 })

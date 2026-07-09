@@ -7,9 +7,8 @@ describe('AccountCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AccountCardComponent]
+      imports: [AccountCardComponent]
     });
-    // Pattern 3: Deprecated TestBed configuration
     fixture = TestBed.createComponent(AccountCardComponent);
     component = fixture.componentInstance;
     component.account = {

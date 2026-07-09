@@ -1,16 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [AppComponent],
+      providers: [provideRouter([])]
     }).compileComponents();
   });
 
@@ -26,10 +22,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('bofa-digital-banking');
   });
 
-  it('should render title', () => {
+  it('should render the Angular version badge', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bofa-digital-banking app is running!');
+    expect(compiled.querySelector('.version-badge')?.textContent).toContain('Running on Angular 18');
   });
 });

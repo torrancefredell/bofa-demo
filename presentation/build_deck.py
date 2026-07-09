@@ -286,9 +286,48 @@ DERAIL-PREP:
 - "We tried AI coding tools and they hallucinate": "Fair — most tools generate code and hope. Devin runs the code. It compiles, executes tests, and iterates until they pass. You'll see that live in about 60 seconds."
 - "What model is it? Where does our code go?": Don't improvise. "Great question — deployment options include VPC and data-isolation controls; I'll bring our security team for a proper review as part of next steps." [RESEARCH: know Cognition's current enterprise deployment/data-residency story cold before the meeting.]""")
 
-# ---------------- Slide 6: Stakeholder concerns ----------------
+# ---------------- Slide 6: Devin & security ----------------
 s = add_slide()
-header(s, "Addressing the elephants in the room", "What each of you is probably thinking", "6")
+header(s, "Before you ask", "Devin & security", "6")
+c_w, c_h = 3.95, 2.6
+card(s, 0.55, 1.8, c_w, c_h, "Isolated by design", [
+    "One isolated machine per session",
+    "Encrypted in transit & at rest",
+], body_size=14)
+card(s, 4.7, 1.8, c_w, c_h, "Deploys your way", [
+    "Enterprise Cloud, or",
+    "Single-tenant VPC via AWS PrivateLink",
+], body_size=14)
+card(s, 8.85, 1.8, c_w, c_h, "Your controls", [
+    "SSO · Okta / Entra / SAML",
+    "Nothing merges without your review",
+], body_size=14)
+rect(s, 0.55, 4.75, 12.25, 0.95, NAVY, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
+tb(s, 0.85, 4.98, 11.7, 0.65, [[("Every command, file change, and test run — logged and replayable.", {"bold": True, "color": WHITE})]], size=16)
+footer(s)
+notes(s, """Address this TO the Security Engineer, by name, before they have to raise it. Getting ahead of the security question is the single biggest trust move in the room.
+
+Architecture talk track: "Two components. The 'brain' — the intelligence — is a stateless service in Cognition's cloud, same architectural pattern as GitHub Copilot. The 'Devbox' — where code actually gets checked out, built, and tested — is a secure, isolated virtual environment. Every session runs on its own isolated machine; customer data is segregated by default and encrypted in transit and at rest."
+
+Deployment talk track (the part that matters for BofA): "Two deployment models. Enterprise Cloud — both pieces in Cognition's secure multi-tenant cloud, running in minutes. For a bank like you, the more likely fit is Customer Dedicated: Cognition hosts Devin in a single-tenant VPC isolated just for you, connected to your network over AWS PrivateLink or an IPSec tunnel. That's how Devin reaches privately networked resources — internal GitHub Enterprise, Artifactory — without anything being exposed publicly. MFA VPN access to internal resources is supported in that model."
+
+Controls: SSO via Okta, Microsoft Entra ID, or any SAML/OIDC IdP. And the control that matters most is the one they already have: Devin only ever proposes PRs — their review, CI, and release gates are unchanged.
+
+[ASK the Security Engineer] "What would your vendor-risk process need to see to get comfortable — architecture review, pen-test reports, a questionnaire? Let's make that the first next step." — this converts the toughest stakeholder into the owner of step 1.
+
+DERAIL-PREP:
+- "Does our code train your models?" — don't improvise; bring Cognition's current data-usage/retention answer in writing. [RESEARCH: get the exact current policy language from the security team before the meeting.]
+- "Can we run it fully on-prem / air-gapped?" — be honest: the brain runs in Cognition's cloud; the dedicated model gives tenant isolation + private networking, not on-prem. Offer the security deep-dive rather than overpromising.
+- "Can we use our own LLM keys?" — No: Devin is a compound AI system and doesn't take third-party LLM keys. Say it plainly; evasiveness here costs credibility.
+
+[RESEARCH BEFORE MEETING]
+- Cognition's current compliance posture (SOC 2 etc.), pen-test/report availability, and data-retention policy — have the documents ready to send same-day.
+- Whether BofA's SCM is internal GitHub Enterprise Server (likely) — that makes the PrivateLink/dedicated story the headline; rehearse it.
+- Docs to cite: https://docs.devin.ai (Enterprise Deployment page).""")
+
+# ---------------- Slide 7: Stakeholder concerns ----------------
+s = add_slide()
+header(s, "Addressing the elephants in the room", "What each of you is probably thinking", "7")
 c_w, c_h = 3.95, 3.6
 card(s, 0.55, 1.62, c_w, c_h, "VP of Engineering", [
     ("\u201CIs this a time-saver or a babysitting job?\u201D", {"italic": True, "color": GRAY}),
@@ -321,7 +360,7 @@ DERAIL-PREP (opinionated execs):
 
 # ---------------- Slide 7: Demo ----------------
 s = add_slide()
-header(s, "Enough slides — let's watch it work", "Live demo: Devin migrates a BofA-shaped banking app, 14 → 18", "7")
+header(s, "Enough slides — let's watch it work", "Live demo: Devin migrates a BofA-shaped banking app, 14 → 18", "8")
 card(s, 0.55, 1.62, 5.3, 4.3, "A codebase shaped like yours", [
     [("Shared component library", {"bold": True})],
     [("SSO/MFA · analytics SDK · financial data", {})],
@@ -358,7 +397,7 @@ DERAIL-PREP:
 
 # ---------------- Slide 8: How Devin solves it ----------------
 s = add_slide()
-header(s, "From demo to your reality", "How this maps to BofA's actual migration", "8")
+header(s, "From demo to your reality", "How this maps to BofA's actual migration", "9")
 steps = [
     ("Week 0", "Scope & safety rails", "Security review · success criteria"),
     ("Weeks 1–2", "Shared library first", "Root of the dependency tree — your team reviews every PR"),
@@ -390,7 +429,7 @@ DERAIL-PREP:
 
 # ---------------- Slide 9: End result ----------------
 s = add_slide()
-header(s, "What good looks like", "The end state: BofA running on Devin", "9")
+header(s, "What good looks like", "The end state: BofA running on Devin", "10")
 c_w, c_h = 3.95, 2.5
 card(s, 0.55, 1.62, c_w, c_h, "This migration", [
     "Angular 18 before the deadline",
@@ -421,7 +460,7 @@ The third card is deliberately the expansion story — mention the other two use
 
 # ---------------- Slide 10: Next steps ----------------
 s = add_slide()
-header(s, "Leaving with a decision, not a deck", "Proposed next steps", "10")
+header(s, "Leaving with a decision, not a deck", "Proposed next steps", "11")
 steps = [
     ("1", "This week", "Pick 3 use cases together", "Start with work like today's demo — upgrades, migrations, test debt"),
     ("2", "Next week", "Security & data review", "Your security team + ours · define success criteria"),

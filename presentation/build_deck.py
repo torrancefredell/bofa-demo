@@ -160,7 +160,7 @@ Don't make the full why-BofA case here — that now has its own slide (slide 4, 
 [ASK the room] "Who owns the Angular upgrade today — and what did they stop doing to own it?" Then actually wait. The VP of Engineering will usually answer. If they name a person/team, refer back to them later ("so Priya's team gets their roadmap back").
 
 [RESEARCH BEFORE MEETING]
-- Verify the current BofA tech budget figure (~$12–13B cited publicly; ~$3.5–4B on new initiatives) from their most recent earnings call.
+- Verify the current BofA tech budget figure (~$13.5B total, $4B+ on new initiatives per BofA Fast Facts) from their most recent earnings call / newsroom.
 - Erica stats (2B+ interactions cited publicly), AI patent counts, exec quotes (Aditya Bhasin, Hari Gopalkrishnan) on GenAI for developers.
 - Keep the Capital One story factual — they may probe.""")
 
@@ -181,12 +181,25 @@ card(s, 8.85, 2.3, c_w, c_h, "The cost", [
     "Backlog grows, greenfield stalls",
     "Best engineers stuck on upkeep",
 ], body_size=14)
-rect(s, 0.55, 4.95, 12.25, 0.95, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
-tb(s, 0.85, 5.18, 11.7, 0.65, [[("Every quarter spent on maintenance is a quarter not spent building.", {"bold": True, "color": NAVY})]], size=16)
+rect(s, 0.55, 4.95, 12.25, 1.35, NAVY, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.09)
+tb(s, 0.85, 5.18, 2.7, 0.95, [[("~70%", {"bold": True, "color": RED, "size": 42})]], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, 3.5, 5.18, 9.0, 0.95, [
+    [("of a major bank's tech budget goes to “running the bank,” not building it.", {"bold": True, "color": WHITE, "size": 15})],
+    [("For BofA that's ~$9.5B of $13.5B — the exact work Devin absorbs.", {"color": RGBColor(0xC9,0xD4,0xEC), "size": 12.5})],
+], anchor=MSO_ANCHOR.MIDDLE)
 footer(s)
 notes(s, """This is the most important non-demo slide. Keep it general — the specific Angular 14→18 story is the demo's job; here you're naming the pattern they live with every day.
 
 Talk track: "Here's the pattern I suspect you know well. Frameworks and platforms age out — Angular, Java versions, Spring, on-prem stacks — and your own security policy says unsupported software can't run in production. So upgrades arrive with hard compliance deadlines, they land on your most experienced engineers, and every one of them displaces greenfield work. The backlog doesn't shrink; it compounds. The cruel part: the better your engineers are, the more of them you burn on maintenance nobody will ever see."
+
+The "run the bank" number is your credibility anchor — deliver it slowly: "Consistent with industry benchmarks — McKinsey and Gartner both put it here — roughly 70% of a major bank's IT budget goes to 'run the bank' operational maintenance, leaving limited capacity for the work that actually differentiates you. Applied to your own public numbers — $13.5B in tech spend, $4B+ on new initiatives — that maintenance baseline is on the order of $9.5B a year. That is exactly the category of work Devin takes on."
+
+McKinsey quote if they want the source verbatim: "'run the bank' and 'mandatory change' spending often represents up to 70 percent of technology budgets... leaving only limited capacity for investments that can drive competitive differentiation."
+
+SOURCES (have these open in a tab):
+- BofA Fast Facts — $13.5B tech, $4B+ new initiatives: https://newsroom.bankofamerica.com/content/newsroom/company-overview/bank-of-america-fast-facts.html
+- McKinsey, "Unlocking value from technology in banking": https://www.mckinsey.com/industries/financial-services/our-insights/unlocking-value-from-technology-in-banking-an-investor-lens
+Be clear the ~$9.5B is your own illustrative math (70% of $13.5B), not a figure BofA published — present it as "on the order of," not a hard number, in case someone checks.
 
 Bridge to the demo (one line, don't dwell): "Today's concrete example is your Angular 14→18 migration — hard EOL deadline, millions of customers, a shared library with 12+ downstream teams. We'll dig into that live in the demo."
 
@@ -210,31 +223,36 @@ s = add_slide()
 header(s, "Why this conversation, here", "Why Bank of America is a strong candidate", "4")
 c_w, c_h = 3.95, 2.6
 card(s, 0.55, 1.8, c_w, c_h, "The scale", [
-    "~$13B annual tech spend",
+    "~$13.5B annual tech spend",
     "One of the largest engineering orgs anywhere",
 ], body_size=14)
 card(s, 4.7, 1.8, c_w, c_h, "The AI posture", [
     "Erica · AI patent leader",
     "Exec buy-in for AI already exists",
 ], body_size=14)
-card(s, 8.85, 1.8, c_w, c_h, "The environment", [
+card(s, 8.85, 1.8, c_w, c_h, "The fit", [
     "Regulated, audit-first culture",
-    "Devin's PR + log model fits it natively",
+    "Engineers keep their GitHub + PR flow",
 ], body_size=14)
 rect(s, 0.55, 4.75, 12.25, 0.95, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
-tb(s, 0.85, 4.98, 11.7, 0.65, [[("The bigger the estate, the bigger the payoff from doing this systematically.", {"bold": True, "color": NAVY})]], size=16)
+tb(s, 0.85, 4.98, 11.7, 0.65, [[("Low switching cost — and already proven at large, regulated enterprises.", {"bold": True, "color": NAVY})]], size=16)
 footer(s)
 notes(s, """This slide answers "why are we the ones hearing this pitch?" — and flatters honestly, with facts.
 
-Talk track: "Three reasons this conversation makes more sense here than almost anywhere else. First, scale: at ~$13B a year in tech, even a small percentage of engineering capacity reclaimed from maintenance is enormous in absolute terms. Second, you're not AI-skeptics — Erica, the patent portfolio, your leadership's public statements — the organizational muscle to adopt this already exists. Third, and counterintuitively: your regulated environment is an advantage. Devin works through pull requests and leaves a complete session log — it was built for places where every change needs a paper trail."
+Talk track: "Three reasons this conversation makes more sense here than almost anywhere else. First, scale: at ~$13.5B a year in tech, even a small percentage of engineering capacity reclaimed from maintenance is enormous in absolute terms. Second, you're not AI-skeptics — Erica, the patent portfolio, your leadership's public statements — the organizational muscle to adopt this already exists. Third, and counterintuitively: your regulated environment is an advantage. Devin works through pull requests and leaves a complete session log — it was built for places where every change needs a paper trail."
 
 [ASK] "Where do you feel the maintenance-vs-greenfield squeeze most acutely right now?" — their answer tells you which use cases to propose in next steps. Write it down.
+
+Adoption / "easy to pick up" point (land it on the VP Eng and Architect): "There's almost no new tool for your engineers to learn. Devin works through the same GitHub, the same pull requests, the same CI you already run. Your team's day-to-day changes from writing migrations by hand to reviewing PRs — something every engineer here already does all day. Onboarding is measured in hours, not a training program."
+
+Similar customers (social proof): "And you wouldn't be the first regulated enterprise to do this — [name the specific comparable customers/logos Cognition is cleared to reference here]." Only say names you are 100% authorized to share; if you can't name any, keep it general ("large regulated enterprises") rather than implying more than you can back up.
 
 DERAIL-PREP: If someone says "scale cuts both ways — our estate is too messy for this": "That's exactly why we start with a bounded pilot on one slice, not a big-bang rollout. Messy is normal; we'll see how Devin handles it on your code."
 
 [RESEARCH BEFORE MEETING]
 - Verify the tech-spend figure and Erica stats from the latest earnings call (same items as the agenda-slide checklist).
-- Find 1–2 public BofA exec quotes on GenAI for developers to cite verbatim.""")
+- Find 1–2 public BofA exec quotes on GenAI for developers to cite verbatim.
+- Confirm which comparable enterprise/financial-services customers Cognition is cleared to name out loud, and have 1–2 ready.""")
 
 # ---------------- Slide 5: What is Devin ----------------
 s = add_slide()
@@ -485,7 +503,7 @@ notes(s, """General derailment playbook (for opinionated execs):
 s = add_slide()
 header(s, "Appendix B", "Pre-meeting research checklist (do before the room)", "B")
 items_l = [
-    "BofA tech budget: verify latest figure (~$12–13B total, ~$3.5–4B new initiatives) from most recent earnings call.",
+    "BofA tech budget: verify latest figure (~$13.5B total, $4B+ new initiatives per BofA Fast Facts) from most recent earnings call / newsroom.",
     "Erica + AI posture: current interaction stats, AI patent counts, exec quotes (Aditya Bhasin, Hari Gopalkrishnan) on GenAI for developers.",
     "Angular evidence: pull 2–3 live BofA job postings listing Angular for digital banking — grounds the 'your stack' claim.",
     "Angular 14 EOL specifics: community EOL Nov 2023; check if BofA uses extended LTS (HeroDevs NES etc.) — changes urgency framing.",
@@ -505,7 +523,7 @@ footer(s)
 notes(s, """This slide is your homework list — everything the deck references that needs verification or that I (Devin) couldn't confirm as current fact. Delete before presenting.
 
 Highest priority items:
-1. The ~$13B tech budget and Erica stats — these are your two 'I did my homework' credibility numbers; get them current and sourced.
+1. The ~$13.5B tech budget and Erica stats — these are your two 'I did my homework' credibility numbers; get them current and sourced.
 2. Cognition's enterprise security/deployment answers — the Security Engineer WILL ask, and a fumbled answer undoes the whole demo.
 3. Attendee names/backgrounds — the personas slide is dramatically stronger delivered to real people by name.
 4. The extended-LTS question — if BofA already bought Angular extended support, your urgency pitch shifts from 'policy violation' to 'you're paying rent on dead software; here's the exit.'""")

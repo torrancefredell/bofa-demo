@@ -462,29 +462,31 @@ The third card is deliberately the expansion story — mention the other two use
 s = add_slide()
 header(s, "Leaving with a decision, not a deck", "Proposed next steps", "11")
 steps = [
-    ("1", "This week", "Pick 3 use cases together", "Start with work like today's demo — upgrades, migrations, test debt"),
-    ("2", "Next week", "Security & data review", "Your security team + ours · define success criteria"),
-    ("3", "Weeks 2–4", "Run a pilot for you", "Devin works one real use case; your engineers review; we measure"),
-    ("4", "Week 4", "Go / no-go readout", "Results in front of this room — then scale to the other two"),
+    ("1", "This week", "Scope your Angular estate", "Inventory the 14.x repos — shared library, downstream consumers, test coverage"),
+    ("2", "Next week", "Security & data review", "Your security team + ours · access to one real repo · success criteria you define"),
+    ("3", "Weeks 2–4", "Devin migrates your shared library", "Real code, 14 → 18 — your engineers review every PR"),
+    ("4", "Week 4", "Go / no-go readout", "Results in front of this room — then downstream apps in parallel"),
 ]
-y = 1.62
+y = 1.58
+row_h, gap = 1.22, 0.14
 for n, when, t, d in steps:
-    rect(s, 0.55, y, 12.25, 1.02, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
-    rect(s, 0.72, y + 0.22, 0.58, 0.58, RED, shape=MSO_SHAPE.OVAL)
-    tb(s, 0.72, y + 0.3, 0.58, 0.44, n, size=17, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
-    tb(s, 1.55, y + 0.12, 1.55, 0.75, when, size=11.5, color=RED, bold=True)
-    tb(s, 3.1, y + 0.12, 9.4, 0.4, t, size=14.5, color=NAVY, bold=True)
-    tb(s, 3.1, y + 0.5, 9.4, 0.45, d, size=11.5, color=DARK)
-    y += 1.12
-tb(s, 0.55, 6.25, 12.25, 0.6, [[("The ask:  ", {"bold": True, "color": RED, "size": 14}), ("three use cases, one pilot, four weeks, your success criteria.", {"size": 14, "bold": True, "color": NAVY})]])
+    rect(s, 0.55, y, 12.25, row_h, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
+    rect(s, 0.78, y + (row_h - 0.62) / 2, 0.62, 0.62, RED, shape=MSO_SHAPE.OVAL)
+    tb(s, 0.78, y + (row_h - 0.62) / 2 + 0.07, 0.62, 0.48, n, size=18, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+    tb(s, 1.65, y, 1.55, row_h, when, size=12, color=RED, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, 3.3, y, 9.3, row_h, [
+        [(t, {"size": 16, "color": NAVY, "bold": True})],
+        [(d, {"size": 12, "color": DARK})],
+    ], anchor=MSO_ANCHOR.MIDDLE)
+    y += row_h + gap
 footer(s)
 notes(s, """End with a specific, low-risk ask and assign owners in the room — that's what turns a nice meeting into a pipeline.
 
-Talk track: "Here's what I'd propose. First, we sit down together and pick three use cases — the natural starting points are work like what you just watched: framework upgrades, migrations, test-coverage debt — but you know your backlog; whatever you'd never staff greenfield engineers on is a candidate. Then a security and data review so your team is comfortable. Then we run a pilot on ONE of the three — a real repo, four weeks, measured against criteria you define. If it earns its keep, we scale to the other two. If it doesn't, you've spent almost nothing finding out."
+Talk track: "You just watched the proof of concept — now let's do it for real. Step one, we scope your actual Angular estate together: which repos are on 14, where the shared library sits, who consumes it downstream. Step two, a security and data review so your team is comfortable, and we agree the success criteria up front. Then weeks two to four: Devin migrates your real shared library, 14 to 18, and your engineers review every PR — same thing you saw today, on your code. Week four, we're back in this room with results, and if it earned its keep, we point Devin at the downstream apps in parallel. If it didn't, you've spent four weeks finding out."
 
-Why 3 use cases but 1 pilot: picking three gets them mentally invested in a roadmap (not a one-off experiment), while piloting one keeps the ask small enough to say yes to today.
+Why the shared library as the pilot slice: it's the root of the dependency tree — proving it there de-risks everything downstream, and it's the exact shape of what they saw in the demo. If they'd rather start on a lower-stakes repo, flex immediately; the structure holds.
 
-Assign ownership live: use-case shortlist → VP Eng (it's their backlog); security review → Security Engineer; pilot repo + success criteria → Chief Architect. People who own a step show up to the next meeting.
+Assign ownership live: estate scoping → Chief Architect (they know the dependency tree); security review → Security Engineer; sponsorship + success criteria → VP Eng. People who own a step show up to the next meeting.
 
 [ASK] the closing question and get a name and a date before you leave the room. "Who should I follow up with, and does end of this week work for the security call?"
 

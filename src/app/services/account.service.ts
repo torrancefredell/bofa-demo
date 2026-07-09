@@ -15,9 +15,7 @@ export class AccountService {
   }
 
   getAccountTransactions(accountNumber: string): Observable<Transaction[]> {
-    // Pattern 1: Deprecated HttpParams usage
-    const params = new HttpParams().set('accountNumber', accountNumber);
-    // In Angular 18, this would be: new HttpParams({ fromObject: { accountNumber } })
+    const params = new HttpParams({ fromObject: { accountNumber } });
     return this.mockBackend.getTransactions(accountNumber);
   }
 }

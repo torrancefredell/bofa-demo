@@ -13,9 +13,10 @@
   </div>
 
   <div *ngIf="!loading" class="accounts-list">
-    <!-- Pattern 5: Deprecated *ngFor syntax (Angular 18 uses @for) -->
-    <div *ngFor="let account of accounts; let i = index">
-      <app-account-card [account]="account"></app-account-card>
-    </div>
+    @for (account of accounts; track account.accountNumber) {
+      <div>
+        <app-account-card [account]="account"></app-account-card>
+      </div>
+    }
   </div>
 </div>

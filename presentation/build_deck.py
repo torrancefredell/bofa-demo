@@ -128,8 +128,8 @@ Personal hook (say it here, expand on slide 3): "Quick context on me — before 
 s = add_slide()
 header(s, "So you know where we're going", "How we'll spend the next 45 minutes", "2")
 rows = [
-    ("1", "Why I'm here (and why BofA)", "~2 min", "Brief context, then straight to your problem"),
-    ("2", "Your problem", "~7 min", "Legacy debt, compliance clocks — you talk, I listen"),
+    ("1", "Why I'm here", "~2 min", "Brief context, then straight to your problem"),
+    ("2", "Your problem — and why BofA", "~7 min", "Legacy debt, compliance clocks — you talk, I listen"),
     ("3", "What Devin is", "~5 min", "The honest 2-minute version"),
     ("4", "Live demo", "~15 min", "A real framework migration, live"),
     ("5", "What it means for each of you", "~10 min", "Capacity · audit · architecture"),
@@ -151,11 +151,11 @@ notes(s, """"Here's the flight plan. Two things to call out: the demo is real �
 
 DERAIL-PREP: This slide is your steering wheel. If the conversation goes sideways later, point back here: "Great question — that's exactly section 5, can I park it for 10 minutes so I can answer it properly?" Parking with a named return time keeps control without shutting anyone down.
 
---- "WHY I'M HERE (AND WHY BOFA)" — delivered verbally off this slide, ~2 min, no dedicated slide. Keep it brief; you represent Cognition, not your biography:
+--- "WHY I'M HERE" — delivered verbally off this slide, ~2 min, no dedicated slide. Keep it brief; you represent Cognition, not your biography:
 
 "Quick context on me before we dig in: before Cognition I was a software engineer at Capital One, so I've been on your side of the table — I was the engineer who got voluntold for framework migrations. Spreadsheets of deprecations, chasing a dozen teams for sign-off on shared library changes, compliance deadlines eating weekends. So when I show you Devin today, it's not abstract for me — this is the work I wished someone would take off my plate."
 
-Then pivot to why BofA (one breath, then move on): "And BofA is exactly where this matters most — you're one of the biggest engineering orgs on the planet, ~$13B a year in tech, already AI-forward with Erica. At your scale, a systematic, fully-logged way to do this work isn't a nice-to-have."
+Don't make the full why-BofA case here — that now has its own slide (slide 4, right after the problem slide, part of agenda item 2). Just tee it up in one breath: "And I'll say a word in a minute about why I think BofA specifically is the right place for this."
 
 [ASK the room] "Who owns the Angular upgrade today — and what did they stop doing to own it?" Then actually wait. The VP of Engineering will usually answer. If they name a person/team, refer back to them later ("so Priya's team gets their roadmap back").
 
@@ -205,9 +205,40 @@ DERAIL-PREP: If someone says "we already have a plan / Nx / internal tooling for
 - Confirm public info on BofA's front-end stack (job postings are a goldmine: BofA postings frequently list Angular for digital banking roles — pull 2–3 current examples so 'you're an Angular shop' is grounded, not guessed).
 - Check whether BofA has publicly discussed extended LTS vendors (HeroDevs NES etc.) — if they've bought extended support, reframe urgency around cost of extension rather than policy violation.""")
 
+# ---------------- Slide 4: Why BofA is a strong candidate ----------------
+s = add_slide()
+header(s, "Why this conversation, here", "Why Bank of America is a strong candidate", "4")
+c_w, c_h = 3.95, 2.6
+card(s, 0.55, 1.8, c_w, c_h, "The scale", [
+    "~$13B annual tech spend",
+    "One of the largest engineering orgs anywhere",
+], body_size=14)
+card(s, 4.7, 1.8, c_w, c_h, "The AI posture", [
+    "Erica · AI patent leader",
+    "Exec buy-in for AI already exists",
+], body_size=14)
+card(s, 8.85, 1.8, c_w, c_h, "The environment", [
+    "Regulated, audit-first culture",
+    "Devin's PR + log model fits it natively",
+], body_size=14)
+rect(s, 0.55, 4.75, 12.25, 0.95, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
+tb(s, 0.85, 4.98, 11.7, 0.65, [[("The bigger the estate, the bigger the payoff from doing this systematically.", {"bold": True, "color": NAVY})]], size=16)
+footer(s)
+notes(s, """This slide answers "why are we the ones hearing this pitch?" — and flatters honestly, with facts.
+
+Talk track: "Three reasons this conversation makes more sense here than almost anywhere else. First, scale: at ~$13B a year in tech, even a small percentage of engineering capacity reclaimed from maintenance is enormous in absolute terms. Second, you're not AI-skeptics — Erica, the patent portfolio, your leadership's public statements — the organizational muscle to adopt this already exists. Third, and counterintuitively: your regulated environment is an advantage. Devin works through pull requests and leaves a complete session log — it was built for places where every change needs a paper trail."
+
+[ASK] "Where do you feel the maintenance-vs-greenfield squeeze most acutely right now?" — their answer tells you which use cases to propose in next steps. Write it down.
+
+DERAIL-PREP: If someone says "scale cuts both ways — our estate is too messy for this": "That's exactly why we start with a bounded pilot on one slice, not a big-bang rollout. Messy is normal; we'll see how Devin handles it on your code."
+
+[RESEARCH BEFORE MEETING]
+- Verify the tech-spend figure and Erica stats from the latest earnings call (same items as the agenda-slide checklist).
+- Find 1–2 public BofA exec quotes on GenAI for developers to cite verbatim.""")
+
 # ---------------- Slide 5: What is Devin ----------------
 s = add_slide()
-header(s, "The 2-minute version", "What is Devin?", "4")
+header(s, "The 2-minute version", "What is Devin?", "5")
 tb(s, 0.55, 1.5, 12.25, 0.6, [[("An AI software engineer", {"bold": True, "color": NAVY, "size": 18}), (" — you assign the task; it plans, codes, tests, and ships a PR.", {"size": 18})]])
 c_w = 3.95
 card(s, 0.55, 2.35, c_w, 2.45, "Works like an engineer", [
@@ -239,7 +270,7 @@ DERAIL-PREP:
 
 # ---------------- Slide 6: Stakeholder concerns ----------------
 s = add_slide()
-header(s, "Addressing the elephants in the room", "What each of you is probably thinking", "5")
+header(s, "Addressing the elephants in the room", "What each of you is probably thinking", "6")
 c_w, c_h = 3.95, 3.6
 card(s, 0.55, 1.62, c_w, c_h, "VP of Engineering", [
     ("\u201CIs this a time-saver or a babysitting job?\u201D", {"italic": True, "color": GRAY}),
@@ -272,7 +303,7 @@ DERAIL-PREP (opinionated execs):
 
 # ---------------- Slide 7: Demo ----------------
 s = add_slide()
-header(s, "Enough slides — let's watch it work", "Live demo: Devin migrates a BofA-shaped banking app, 14 → 18", "6")
+header(s, "Enough slides — let's watch it work", "Live demo: Devin migrates a BofA-shaped banking app, 14 → 18", "7")
 card(s, 0.55, 1.62, 5.3, 4.3, "A codebase shaped like yours", [
     [("Shared component library", {"bold": True})],
     [("SSO/MFA · analytics SDK · financial data", {})],
@@ -309,7 +340,7 @@ DERAIL-PREP:
 
 # ---------------- Slide 8: How Devin solves it ----------------
 s = add_slide()
-header(s, "From demo to your reality", "How this maps to BofA's actual migration", "7")
+header(s, "From demo to your reality", "How this maps to BofA's actual migration", "8")
 steps = [
     ("Week 0", "Scope & safety rails", "Security review · success criteria"),
     ("Weeks 1–2", "Shared library first", "Root of the dependency tree — your team reviews every PR"),
@@ -341,7 +372,7 @@ DERAIL-PREP:
 
 # ---------------- Slide 9: End result ----------------
 s = add_slide()
-header(s, "What good looks like", "The end state: BofA running on Devin", "8")
+header(s, "What good looks like", "The end state: BofA running on Devin", "9")
 c_w, c_h = 3.95, 2.5
 card(s, 0.55, 1.62, c_w, c_h, "This migration", [
     "Angular 18 before the deadline",
@@ -372,12 +403,12 @@ The third card is deliberately the expansion story — mention the other two use
 
 # ---------------- Slide 10: Next steps ----------------
 s = add_slide()
-header(s, "Leaving with a decision, not a deck", "Proposed next steps", "9")
+header(s, "Leaving with a decision, not a deck", "Proposed next steps", "10")
 steps = [
-    ("1", "This week", "Security & data review", "Your security team + ours"),
-    ("2", "Next week", "Pick the pilot slice", "One real repo, your success criteria"),
-    ("3", "Weeks 2–4", "Bounded pilot", "Devin migrates it; your engineers review; we measure"),
-    ("4", "Week 4", "Go / no-go readout", "Results in front of this room"),
+    ("1", "This week", "Pick 3 use cases together", "Start with work like today's demo — upgrades, migrations, test debt"),
+    ("2", "Next week", "Security & data review", "Your security team + ours · define success criteria"),
+    ("3", "Weeks 2–4", "Run a pilot for you", "Devin works one real use case; your engineers review; we measure"),
+    ("4", "Week 4", "Go / no-go readout", "Results in front of this room — then scale to the other two"),
 ]
 y = 1.62
 for n, when, t, d in steps:
@@ -388,13 +419,15 @@ for n, when, t, d in steps:
     tb(s, 3.1, y + 0.12, 9.4, 0.4, t, size=14.5, color=NAVY, bold=True)
     tb(s, 3.1, y + 0.5, 9.4, 0.45, d, size=11.5, color=DARK)
     y += 1.12
-tb(s, 0.55, 6.25, 12.25, 0.6, [[("The ask:  ", {"bold": True, "color": RED, "size": 14}), ("one repo, four weeks, your success criteria.", {"size": 14, "bold": True, "color": NAVY})]])
+tb(s, 0.55, 6.25, 12.25, 0.6, [[("The ask:  ", {"bold": True, "color": RED, "size": 14}), ("three use cases, one pilot, four weeks, your success criteria.", {"size": 14, "bold": True, "color": NAVY})]])
 footer(s)
 notes(s, """End with a specific, low-risk ask and assign owners in the room — that's what turns a nice meeting into a pipeline.
 
-Talk track: "I'm not asking you to bet the bank. I'm asking for one repo and four weeks, measured against criteria YOU define. If Devin doesn't earn its keep, you've spent almost nothing finding out."
+Talk track: "Here's what I'd propose. First, we sit down together and pick three use cases — the natural starting points are work like what you just watched: framework upgrades, migrations, test-coverage debt — but you know your backlog; whatever you'd never staff greenfield engineers on is a candidate. Then a security and data review so your team is comfortable. Then we run a pilot on ONE of the three — a real repo, four weeks, measured against criteria you define. If it earns its keep, we scale to the other two. If it doesn't, you've spent almost nothing finding out."
 
-Assign ownership live: security review → Security Engineer; pilot repo + success criteria → Chief Architect; sponsorship/capacity → VP Eng. People who own a step show up to the next meeting.
+Why 3 use cases but 1 pilot: picking three gets them mentally invested in a roadmap (not a one-off experiment), while piloting one keeps the ask small enough to say yes to today.
+
+Assign ownership live: use-case shortlist → VP Eng (it's their backlog); security review → Security Engineer; pilot repo + success criteria → Chief Architect. People who own a step show up to the next meeting.
 
 [ASK] the closing question and get a name and a date before you leave the room. "Who should I follow up with, and does end of this week work for the security call?"
 

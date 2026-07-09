@@ -160,7 +160,7 @@ Don't make the full why-BofA case here — that now has its own slide (slide 4, 
 [ASK the room] "Who owns the Angular upgrade today — and what did they stop doing to own it?" Then actually wait. The VP of Engineering will usually answer. If they name a person/team, refer back to them later ("so Priya's team gets their roadmap back").
 
 [RESEARCH BEFORE MEETING]
-- Verify the current BofA tech budget figure (~$12–13B cited publicly; ~$3.5–4B on new initiatives) from their most recent earnings call.
+- Verify the current BofA tech budget figure (~$13.5B total, $4B+ on new initiatives per BofA Fast Facts) from their most recent earnings call / newsroom.
 - Erica stats (2B+ interactions cited publicly), AI patent counts, exec quotes (Aditya Bhasin, Hari Gopalkrishnan) on GenAI for developers.
 - Keep the Capital One story factual — they may probe.""")
 
@@ -239,7 +239,7 @@ tb(s, 0.85, 4.98, 11.7, 0.65, [[("Low switching cost — and already proven at l
 footer(s)
 notes(s, """This slide answers "why are we the ones hearing this pitch?" — and flatters honestly, with facts.
 
-Talk track: "Three reasons this conversation makes more sense here than almost anywhere else. First, scale: at ~$13B a year in tech, even a small percentage of engineering capacity reclaimed from maintenance is enormous in absolute terms. Second, you're not AI-skeptics — Erica, the patent portfolio, your leadership's public statements — the organizational muscle to adopt this already exists. Third, and counterintuitively: your regulated environment is an advantage. Devin works through pull requests and leaves a complete session log — it was built for places where every change needs a paper trail."
+Talk track: "Three reasons this conversation makes more sense here than almost anywhere else. First, scale: at ~$13.5B a year in tech, even a small percentage of engineering capacity reclaimed from maintenance is enormous in absolute terms. Second, you're not AI-skeptics — Erica, the patent portfolio, your leadership's public statements — the organizational muscle to adopt this already exists. Third, and counterintuitively: your regulated environment is an advantage. Devin works through pull requests and leaves a complete session log — it was built for places where every change needs a paper trail."
 
 [ASK] "Where do you feel the maintenance-vs-greenfield squeeze most acutely right now?" — their answer tells you which use cases to propose in next steps. Write it down.
 
@@ -503,7 +503,7 @@ notes(s, """General derailment playbook (for opinionated execs):
 s = add_slide()
 header(s, "Appendix B", "Pre-meeting research checklist (do before the room)", "B")
 items_l = [
-    "BofA tech budget: verify latest figure (~$12–13B total, ~$3.5–4B new initiatives) from most recent earnings call.",
+    "BofA tech budget: verify latest figure (~$13.5B total, $4B+ new initiatives per BofA Fast Facts) from most recent earnings call / newsroom.",
     "Erica + AI posture: current interaction stats, AI patent counts, exec quotes (Aditya Bhasin, Hari Gopalkrishnan) on GenAI for developers.",
     "Angular evidence: pull 2–3 live BofA job postings listing Angular for digital banking — grounds the 'your stack' claim.",
     "Angular 14 EOL specifics: community EOL Nov 2023; check if BofA uses extended LTS (HeroDevs NES etc.) — changes urgency framing.",
@@ -523,7 +523,7 @@ footer(s)
 notes(s, """This slide is your homework list — everything the deck references that needs verification or that I (Devin) couldn't confirm as current fact. Delete before presenting.
 
 Highest priority items:
-1. The ~$13B tech budget and Erica stats — these are your two 'I did my homework' credibility numbers; get them current and sourced.
+1. The ~$13.5B tech budget and Erica stats — these are your two 'I did my homework' credibility numbers; get them current and sourced.
 2. Cognition's enterprise security/deployment answers — the Security Engineer WILL ask, and a fumbled answer undoes the whole demo.
 3. Attendee names/backgrounds — the personas slide is dramatically stronger delivered to real people by name.
 4. The extended-LTS question — if BofA already bought Angular extended support, your urgency pitch shifts from 'policy violation' to 'you're paying rent on dead software; here's the exit.'""")

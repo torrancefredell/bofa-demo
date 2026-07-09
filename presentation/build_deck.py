@@ -151,11 +151,11 @@ notes(s, """"Here's the flight plan. Two things to call out: the demo is real �
 
 DERAIL-PREP: This slide is your steering wheel. If the conversation goes sideways later, point back here: "Great question — that's exactly section 5, can I park it for 10 minutes so I can answer it properly?" Parking with a named return time keeps control without shutting anyone down.
 
---- "WHY I'M HERE (AND WHY BOFA)" — delivered verbally off this slide, ~2 min, no dedicated slide. Keep it brief; you represent Cognition, not your biography:
+--- "WHY I'M HERE" — delivered verbally off this slide, ~2 min, no dedicated slide. Keep it brief; you represent Cognition, not your biography:
 
 "Quick context on me before we dig in: before Cognition I was a software engineer at Capital One, so I've been on your side of the table — I was the engineer who got voluntold for framework migrations. Spreadsheets of deprecations, chasing a dozen teams for sign-off on shared library changes, compliance deadlines eating weekends. So when I show you Devin today, it's not abstract for me — this is the work I wished someone would take off my plate."
 
-Then pivot to why BofA (one breath, then move on): "And BofA is exactly where this matters most — you're one of the biggest engineering orgs on the planet, ~$13B a year in tech, already AI-forward with Erica. At your scale, a systematic, fully-logged way to do this work isn't a nice-to-have."
+Don't make the full why-BofA case here — that now has its own slide (slide 4, right after the problem slide, part of agenda item 2). Just tee it up in one breath: "And I'll say a word in a minute about why I think BofA specifically is the right place for this."
 
 [ASK the room] "Who owns the Angular upgrade today — and what did they stop doing to own it?" Then actually wait. The VP of Engineering will usually answer. If they name a person/team, refer back to them later ("so Priya's team gets their roadmap back").
 

@@ -129,9 +129,9 @@ s = add_slide()
 header(s, "So you know where we're going", "How we'll spend the next 45 minutes", "2")
 rows = [
     ("1", "Why I'm here (and why BofA)", "~2 min", "Brief context, then straight to your problem"),
-    ("2", "Your problem", "~7 min", "Angular 14 EOL — you talk, I listen"),
+    ("2", "Your problem", "~7 min", "Legacy debt, compliance clocks — you talk, I listen"),
     ("3", "What Devin is", "~5 min", "The honest 2-minute version"),
-    ("4", "Live demo", "~15 min", "The real 14→18 migration, live"),
+    ("4", "Live demo", "~15 min", "A real framework migration, live"),
     ("5", "What it means for each of you", "~10 min", "Capacity · audit · architecture"),
     ("6", "Next steps", "~5 min", "A concrete pilot proposal"),
 ]
@@ -166,32 +166,36 @@ Then pivot to why BofA (one breath, then move on): "And BofA is exactly where th
 
 # ---------------- Slide 3: The problem ----------------
 s = add_slide()
-header(s, "Let's get straight to it", "The problem: a compliance clock on a system that can't break", "3")
-tb(s, 0.55, 1.5, 12.25, 0.55, [[("Angular 14 is past end-of-life ", {"bold": True, "color": RED, "size": 17}), ("— an EOL framework in production violates your own security policy.", {"size": 17})]])
+header(s, "Let's get straight to it", "The problem: legacy debt is eating your roadmap", "3")
+tb(s, 0.55, 1.5, 12.25, 0.55, [[("Frameworks age out ", {"bold": True, "color": RED, "size": 17}), ("— and running unsupported software in production violates your own security policy.", {"size": 17})]])
 c_w, c_h = 3.95, 2.35
-card(s, 0.55, 2.3, c_w, c_h, "The blast radius", [
-    "Millions of retail customers",
-    "12+ downstream teams",
+card(s, 0.55, 2.3, c_w, c_h, "The debt", [
+    "Outdated frameworks across the estate",
+    "Every deferred upgrade compounds",
 ], body_size=14)
-card(s, 4.7, 2.3, c_w, c_h, "The complexity", [
-    "SSO / MFA · analytics SDK",
-    "Financial data providers",
+card(s, 4.7, 2.3, c_w, c_h, "The clock", [
+    "Compliance-driven EOL deadlines",
+    "Audit exposure while you wait",
 ], body_size=14)
-card(s, 8.85, 2.3, c_w, c_h, "The math", [
-    "4 major versions of churn",
-    "Months of senior-engineer time",
+card(s, 8.85, 2.3, c_w, c_h, "The cost", [
+    "Backlog grows, greenfield stalls",
+    "Best engineers stuck on upkeep",
 ], body_size=14)
 rect(s, 0.55, 4.95, 12.25, 0.95, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
-tb(s, 0.85, 5.18, 11.7, 0.65, [[("The real constraint isn't code — it's coordinating 12 teams' calendars.", {"bold": True, "color": NAVY})]], size=16)
+tb(s, 0.85, 5.18, 11.7, 0.65, [[("Every quarter spent on maintenance is a quarter not spent building.", {"bold": True, "color": NAVY})]], size=16)
 footer(s)
-notes(s, """This is the most important non-demo slide. Spend real time here and let THEM correct you — being corrected is a win, it means engagement and better intel.
+notes(s, """This is the most important non-demo slide. Keep it general — the specific Angular 14→18 story is the demo's job; here you're naming the pattern they live with every day.
 
-Talk track: "Here's my understanding of what you're up against — please red-pen this. You have a hard, policy-driven deadline on an app you cannot afford to destabilize, and the thing that makes it slow isn't typing code, it's the coordination tax across a dozen consuming teams."
+Talk track: "Here's the pattern I suspect you know well. Frameworks and platforms age out — Angular, Java versions, Spring, on-prem stacks — and your own security policy says unsupported software can't run in production. So upgrades arrive with hard compliance deadlines, they land on your most experienced engineers, and every one of them displaces greenfield work. The backlog doesn't shrink; it compounds. The cruel part: the better your engineers are, the more of them you burn on maintenance nobody will ever see."
+
+Bridge to the demo (one line, don't dwell): "Today's concrete example is your Angular 14→18 migration — hard EOL deadline, millions of customers, a shared library with 12+ downstream teams. We'll dig into that live in the demo."
+
+Spend real time here and let THEM correct you — being corrected is a win, it means engagement and better intel.
 
 [ASK, by persona]
-- VP Eng: "What's the current internal estimate for the upgrade, and what's it displacing on the roadmap?"
-- Security: "What does your policy actually require when a framework goes EOL — remediation plan? exception filing? What's your audit exposure today?"
-- Architect: "How do downstream teams consume the library today — pinned versions? monorepo? That changes the rollout strategy."
+- VP Eng: "How much of your team's capacity goes to maintenance and upgrades versus new build? What's the number you wish it was?"
+- Security: "What does your policy actually require when something goes EOL — remediation plan? exception filing? What's your audit exposure today?"
+- Architect: "Where's the next EOL clock ticking in your estate — and how does that upgrade propagate through shared dependencies?"
 
 [ASK] Check-my-math question: "Is that a fair picture of where this stands? What am I missing or getting wrong about your environment?" [PAUSE] after it. Silence is fine. Whatever they say, write it down visibly.
 

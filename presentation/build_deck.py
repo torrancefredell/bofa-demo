@@ -462,10 +462,10 @@ The third card is deliberately the expansion story — mention the other two use
 s = add_slide()
 header(s, "Leaving with a decision, not a deck", "Proposed next steps", "11")
 steps = [
-    ("1", "This week", "Scope your Angular estate", "Inventory the 14.x repos — shared library, downstream consumers, test coverage"),
-    ("2", "Next week", "Security & data review", "Your security team + ours · access to one real repo · success criteria you define"),
-    ("3", "Weeks 2–4", "Devin migrates your shared library", "Real code, 14 → 18 — your engineers review every PR"),
-    ("4", "Week 4", "Go / no-go readout", "Results in front of this room — then downstream apps in parallel"),
+    ("1", "This week", "Pick what to test", "Choose the Angular 14.x slice Devin starts on — the shared library is the natural first pick"),
+    ("2", "Weeks 1–4", "Pilot phase", "Security review, then Devin migrates real code 14 → 18 — your engineers review every PR"),
+    ("3", "Week 4", "See how it does", "Readout against your success criteria, in front of this room"),
+    ("4", "After", "Deploy Devin fully", "Downstream apps in parallel — then the rest of the maintenance backlog"),
 ]
 y = 1.58
 row_h, gap = 1.22, 0.14
@@ -482,7 +482,7 @@ for n, when, t, d in steps:
 footer(s)
 notes(s, """End with a specific, low-risk ask and assign owners in the room — that's what turns a nice meeting into a pipeline.
 
-Talk track: "You just watched the proof of concept — now let's do it for real. Step one, we scope your actual Angular estate together: which repos are on 14, where the shared library sits, who consumes it downstream. Step two, a security and data review so your team is comfortable, and we agree the success criteria up front. Then weeks two to four: Devin migrates your real shared library, 14 to 18, and your engineers review every PR — same thing you saw today, on your code. Week four, we're back in this room with results, and if it earned its keep, we point Devin at the downstream apps in parallel. If it didn't, you've spent four weeks finding out."
+Talk track: "You just watched the proof of concept — now let's do it for real, in four simple beats. One: we pick what to test — which slice of your Angular 14 estate Devin starts on; the shared library is the natural first pick, but it's your call. Two: the pilot phase — a quick security and data review, then Devin migrates real code, 14 to 18, with your engineers reviewing every PR, same as you saw today. Three: we see how it did — back in this room at week four, measured against success criteria you defined up front. Four: if it earned its keep, we deploy Devin fully — downstream apps in parallel, then the rest of the maintenance backlog. If it didn't, you've spent four weeks finding out."
 
 Why the shared library as the pilot slice: it's the root of the dependency tree — proving it there de-risks everything downstream, and it's the exact shape of what they saw in the demo. If they'd rather start on a lower-stakes repo, flex immediately; the structure holds.
 

@@ -429,25 +429,30 @@ DERAIL-PREP:
 
 # ---------------- Slide 9: End result ----------------
 s = add_slide()
-header(s, "What good looks like", "The end state: BofA running on Devin", "10")
-c_w, c_h = 3.95, 2.5
-card(s, 0.55, 1.62, c_w, c_h, "This migration", [
-    "Angular 18 before the deadline",
-    "12+ teams unbroken",
-    "Audit trail, automatic",
-], body_size=14)
-card(s, 4.7, 1.62, c_w, c_h, "Your engineers", [
-    "Back on revenue features",
-    "Reviewing, not hand-migrating",
-], body_size=14)
-card(s, 8.85, 1.62, c_w, c_h, "The bigger unlock", [
-    "Angular 19, 20… become routine",
-    "Same machinery: cloud migration, test coverage",
-], body_size=14)
-rect(s, 0.55, 4.4, 12.25, 1.15, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
-tb(s, 0.85, 4.62, 11.7, 0.85, [
-    [("\u201CWe met a hard compliance deadline without pausing the roadmap.\u201D", {"italic": True, "bold": True, "color": NAVY})],
-], size=17)
+header(s, "What good looks like", "The future of Bank of America engineering", "10")
+rect(s, 0.55, 1.62, 5.75, 5.0, LIGHT, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.06)
+tb(s, 0.95, 1.92, 5.0, 0.5, "TODAY", size=13, color=GRAY, bold=True)
+tb(s, 0.95, 2.75, 5.0, 3.6, [
+    [("~70% of tech budget on maintenance", {"size": 15, "color": DARK})],
+    [("", {"size": 30})],
+    [("Compliance deadlines displace the roadmap", {"size": 15, "color": DARK})],
+    [("", {"size": 30})],
+    [("Best engineers stuck on migrations & upkeep", {"size": 15, "color": DARK})],
+    [("", {"size": 30})],
+    [("Legacy debt compounds, quarter after quarter", {"size": 15, "color": DARK})],
+])
+rect(s, 6.42, 3.72, 0.5, 0.8, RED, shape=MSO_SHAPE.CHEVRON)
+rect(s, 7.05, 1.62, 5.75, 5.0, NAVY, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.06)
+tb(s, 7.45, 1.92, 5.0, 0.5, "WITH DEVIN", size=13, color=RED, bold=True)
+tb(s, 7.45, 2.75, 5.0, 3.6, [
+    [("Maintenance runs in the background, PR by PR", {"size": 15, "color": WHITE})],
+    [("", {"size": 30})],
+    [("Deadlines met without pausing the roadmap", {"size": 15, "color": WHITE})],
+    [("", {"size": 30})],
+    [("Engineers on greenfield and revenue work", {"size": 15, "color": WHITE})],
+    [("", {"size": 30})],
+    [("Every change reviewed, logged, and auditable", {"size": 15, "color": WHITE})],
+])
 footer(s)
 notes(s, """Paint the after-picture in THEIR terms, one beat per persona:
 - VP Eng: capacity back + deadline met without roadmap carnage.
@@ -464,8 +469,8 @@ header(s, "Leaving with a decision, not a deck", "Proposed next steps", "11")
 steps = [
     ("1", "This week", "Pick 3 Angular apps together", "We sit down with your team and choose three 14.x apps for Devin to fix"),
     ("2", "Weeks 1–4", "Pilot phase", "Security review, then Devin migrates real code 14 → 18 — your engineers review every PR"),
-    ("3", "Week 4", "See how it does", "Readout against your success criteria, in front of this room"),
-    ("4", "After", "Deploy Devin fully", "Rest of the Angular estate in parallel — then the broader maintenance backlog"),
+    ("3", "Week 4", "Assess pilot performance", "Speed · engineer time saved · quality — against your targets"),
+    ("4", "After", "Deploy Devin fully", "If the pilot succeeds, we modernize the rest of your Angular estate in parallel"),
 ]
 y = 1.58
 row_h, gap = 1.22, 0.14

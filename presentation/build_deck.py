@@ -462,10 +462,10 @@ The third card is deliberately the expansion story — mention the other two use
 s = add_slide()
 header(s, "Leaving with a decision, not a deck", "Proposed next steps", "11")
 steps = [
-    ("1", "This week", "Pick what to test", "Choose the Angular 14.x slice Devin starts on — the shared library is the natural first pick"),
+    ("1", "This week", "Pick 3 Angular apps together", "We sit down with your team and choose three 14.x apps for Devin to fix"),
     ("2", "Weeks 1–4", "Pilot phase", "Security review, then Devin migrates real code 14 → 18 — your engineers review every PR"),
     ("3", "Week 4", "See how it does", "Readout against your success criteria, in front of this room"),
-    ("4", "After", "Deploy Devin fully", "Downstream apps in parallel — then the rest of the maintenance backlog"),
+    ("4", "After", "Deploy Devin fully", "Rest of the Angular estate in parallel — then the broader maintenance backlog"),
 ]
 y = 1.58
 row_h, gap = 1.22, 0.14
@@ -482,11 +482,11 @@ for n, when, t, d in steps:
 footer(s)
 notes(s, """End with a specific, low-risk ask and assign owners in the room — that's what turns a nice meeting into a pipeline.
 
-Talk track: "You just watched the proof of concept — now let's do it for real, in four simple beats. One: we pick what to test — which slice of your Angular 14 estate Devin starts on; the shared library is the natural first pick, but it's your call. Two: the pilot phase — a quick security and data review, then Devin migrates real code, 14 to 18, with your engineers reviewing every PR, same as you saw today. Three: we see how it did — back in this room at week four, measured against success criteria you defined up front. Four: if it earned its keep, we deploy Devin fully — downstream apps in parallel, then the rest of the maintenance backlog. If it didn't, you've spent four weeks finding out."
+Talk track: "You just watched the proof of concept — now let's do it for real, in four simple beats. One: we sit down with your team and pick three Angular 14 apps for Devin to fix — you know which ones hurt the most; a mix of a lower-stakes app and something meaty like the shared library works well. Two: the pilot phase — a quick security and data review, then Devin migrates that real code, 14 to 18, with your engineers reviewing every PR, same as you saw today. Three: we see how it did — back in this room at week four, measured against success criteria you defined up front. Four: if it earned its keep, we deploy Devin fully — the rest of the Angular estate in parallel, then the broader maintenance backlog. If it didn't, you've spent four weeks finding out."
 
-Why the shared library as the pilot slice: it's the root of the dependency tree — proving it there de-risks everything downstream, and it's the exact shape of what they saw in the demo. If they'd rather start on a lower-stakes repo, flex immediately; the structure holds.
+Why three apps: one app feels like a science experiment; three makes it a representative sample — and gets them invested in a roadmap. Steer the mix: one low-stakes, one typical, one hard (e.g. the shared library). If they push to start with just one, flex immediately; the structure holds.
 
-Assign ownership live: estate scoping → Chief Architect (they know the dependency tree); security review → Security Engineer; sponsorship + success criteria → VP Eng. People who own a step show up to the next meeting.
+Assign ownership live: the three-app shortlist → Chief Architect (they know the dependency tree); security review → Security Engineer; sponsorship + success criteria → VP Eng. People who own a step show up to the next meeting.
 
 [ASK] the closing question and get a name and a date before you leave the room. "Who should I follow up with, and does end of this week work for the security call?"
 

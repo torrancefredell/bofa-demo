@@ -289,22 +289,22 @@ DERAIL-PREP:
 # ---------------- Slide 6: Devin & security ----------------
 s = add_slide()
 header(s, "Before you ask", "Devin & security", "6")
-c_w, c_h = 3.95, 2.6
-card(s, 0.55, 1.8, c_w, c_h, "Isolated by design", [
-    "One isolated machine per session",
-    "Encrypted in transit & at rest",
-], body_size=14)
-card(s, 4.7, 1.8, c_w, c_h, "Deploys your way", [
-    "Enterprise Cloud, or",
-    "Single-tenant VPC via AWS PrivateLink",
-], body_size=14)
-card(s, 8.85, 1.8, c_w, c_h, "Your controls", [
-    "SSO · Okta / Entra / SAML",
-    "Nothing merges without your review",
-], body_size=14)
-rect(s, 0.55, 4.75, 12.25, 0.95, NAVY, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.1)
-tb(s, 0.85, 4.98, 11.7, 0.65, [[("Every command, file change, and test run — logged and replayable.", {"bold": True, "color": WHITE})]], size=16)
-footer(s)
+sections = [
+    ("Isolated", "One isolated machine per session — encrypted in transit & at rest."),
+    ("Private", "Enterprise Cloud, or a single-tenant VPC connected via AWS PrivateLink."),
+    ("Controlled", "SSO (Okta / Entra / SAML) — and nothing merges without your review."),
+]
+y = 1.85
+for i, (word, line) in enumerate(sections):
+    rect(s, 0.55, y + 0.12, 0.14, 0.72, RED)
+    tb(s, 0.95, y, 3.3, 0.95, word, size=26, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, 4.45, y, 8.35, 0.95, line, size=15, color=DARK, anchor=MSO_ANCHOR.MIDDLE)
+    y += 0.98
+    if i < len(sections) - 1:
+        rect(s, 0.55, y - 0.02, 12.25, 0.016, RGBColor(0xD5, 0xDC, 0xE8))
+        y += 0.28
+rect(s, 0, 5.85, SW, 1.0, NAVY)
+tb(s, 0.95, 6.03, 11.7, 0.65, [[("Every command, file change, and test run — logged and replayable.", {"bold": True, "color": WHITE})]], size=16, anchor=MSO_ANCHOR.MIDDLE)
 notes(s, """Address this TO the Security Engineer, by name, before they have to raise it. Getting ahead of the security question is the single biggest trust move in the room.
 
 Architecture talk track: "Two components. The 'brain' — the intelligence — is a stateless service in Cognition's cloud, same architectural pattern as GitHub Copilot. The 'Devbox' — where code actually gets checked out, built, and tested — is a secure, isolated virtual environment. Every session runs on its own isolated machine; customer data is segregated by default and encrypted in transit and at rest."

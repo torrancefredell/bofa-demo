@@ -15,7 +15,6 @@ Selected **Angular Version Upgrade** as the primary use case for the Bank of Ame
 - **Active vs passive**: Framework upgrade shows active development vs testing improvements
 - **Clearer ROI**: Direct risk mitigation (unsupported framework) vs indirect risk reduction
 - **Timeline urgency**: Hard compliance deadline vs regulatory exam preparation
-- **Better narrative**: Problem → Solution → Impact story
 
 ## BofA-Specific Architecture
 
@@ -64,26 +63,6 @@ Our demo mirrors BofA's actual architecture to demonstrate understanding of thei
 
 **Answer**: No. The **architecture** matches BofA's tech stack, even though the **implementation** is mocked.
 
-**Executives care about**:
-- ✅ Do you understand our architecture? (Yes, same structure)
-- ✅ Can you handle our integration complexity? (Yes, same patterns)
-- ✅ Will this work with our dependencies? (Yes, dependency management)
-
-**Executives don't care about**:
-- Whether API calls are real or mocked
-- Whether data is hardcoded or from databases
-- Implementation details they won't see
-
-## Demo Narrative
-
-"We've structured this exactly like BofA's architecture:
-- Same shared component library approach
-- Same authentication integration patterns
-- Same analytics SDK integration
-- Same third-party provider dependencies
-
-The difference is we're using mock implementations for the demo, but the upgrade challenges and Devin's capabilities are identical to what you'd face with your real integrations."
-
 ## Executive Alignment
 
 ### VP of Engineering, Digital Banking
@@ -109,5 +88,3 @@ The Angular upgrade use case with BofA-specific architecture demonstrates:
 2. **Ability to handle complex integrations**
 3. **Systematic approach to framework upgrades**
 4. **Executive-relevant value proposition**
-
-This creates the strongest foundation for a successful executive meeting and Devin demo.

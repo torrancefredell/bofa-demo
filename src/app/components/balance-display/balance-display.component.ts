@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-balance-display',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './balance-display.component.html',
   styleUrls: ['./balance-display.component.scss']
 })

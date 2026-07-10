@@ -9,7 +9,6 @@ describe('AccountService', () => {
     TestBed.configureTestingModule({
       providers: [AccountService, MockBackendService]
     });
-    // Pattern 3: Deprecated TestBed configuration
     service = TestBed.inject(AccountService);
   });
 

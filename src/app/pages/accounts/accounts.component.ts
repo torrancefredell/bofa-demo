@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Account } from '../../models';
 import { AccountService } from '../../services/account.service';
+import { SharedHeaderComponent } from '../../shared/components/shared-header/shared-header.component';
+import { AccountCardComponent } from '../../components/account-card/account-card.component';
 
 @Component({
   selector: 'app-accounts',
+  standalone: true,
+  imports: [CommonModule, SharedHeaderComponent, AccountCardComponent],
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.scss']
 })
